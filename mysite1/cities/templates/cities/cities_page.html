@@ -1,0 +1,219 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Cities
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/city-banner.jpg" class="img-fluid">-->
+        {% for block in self.section1 %}
+        {% if block.block_type == 'banner_image' %}
+            {% image block.value fill-1585x555 class="img-fluid" %}
+        {% endif %}
+        {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            The Cities We Proudly Serve-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="local-delivery-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Local Delivery Networks-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="local-map-box text-center wow fadeInDown animated">
+            <img src="{% static 'images/map.png' %}" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<section class="want-zipply-city section-padding">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInDown animated">
+            <h1>
+<!--                Want Zipply In Your City?-->
+                {% for block in self.section3 %}
+                {% if block.block_type == 'banner_title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            {% for block in self.section3 %}
+            {% if block.block_type == 'banner_cta' %}
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+<!--            <a href="where-to-next.html" class="btn btn-medium">Request Your City</a>-->
+        </div>
+    </div>
+</section>
+
+<section class="whyzipply-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                The Zipply Benefit-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section4 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        Use Zipply-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        Get a Zipply Driver right now, or schedule a future pickup – anywhere in your city.-->
+                        {{card.text}}
+                    </p>
+<!--                    <a href="app.html" class="btn red-btn">Download App</a>-->
+                    <a href="{{card.cta.button_page.url}}" class="btn red-btn">{{card.cta.button_text}}</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-handshake-o" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Partner with Zipply-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Zipply’s same-day delivery services can fulfill all of your retail and commercial delivery needs.-->
+<!--                    </p>-->
+<!--                    <a href="business.html" class="btn red-btn">Learn More</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-truck" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Drive with Zipply-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Interested in working when you want, and earning up to $40/hr driving for Zipply? Start here.-->
+<!--                    </p>-->
+<!--                    <a href="drive.html" class="btn red-btn">Get Started</a>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+
+<section class="metros-serve-section bg-black section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center white-title mb-5 wow fadeInDown animated">
+                    <h1>
+<!--                        Metros We Proudly Serve-->
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'heading' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </h1>
+                </div>
+                <ul class="train-serve-ul wow fadeInUp animated">
+                    {% for block in self.section5 %}
+                    {% if block.block_type == 'locations' %}
+                    {% for location in block.value %}
+<!--                    <li>Atlanta, GA</li>-->
+                        <li>{{location}}</li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+<!--                    <li>Baltimore, MD</li>-->
+<!--                    <li>Boston, MA</li>-->
+<!--                    <li>Chicago, IL</li>-->
+<!--                    <li>Columbus, OH</li>-->
+<!--                    <li>Denver, CO</li>-->
+
+<!--                    <li>Jacksonville, FL</li>-->
+<!--                    <li>Kansas City, KS/MO</li>-->
+<!--                    <li>Louisville, KY</li>-->
+<!--                    <li>Memphis, TN</li>-->
+<!--                    <li>Miami, FL</li>-->
+<!--                    <li>Minneapolis, MN</li>-->
+
+<!--                    <li>Nashville, TN</li>-->
+<!--                    <li>Orlando, FL</li>-->
+<!--                    <li>Phoenix, AZ</li>-->
+<!--                    <li>Port St Lucie, FL</li>-->
+<!--                    <li>Tampa Bay, FL</li>-->
+<!--                    <li>Washington DC Area</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="feeling-zipply-section section-padding text-center">
+    <div class="container">
+        <div class="section-title wow fadeInDown animated">
+            <h1>
+<!--                Feelin' the Zipply Love?-->
+                {% for block in self.section6 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            <h3>
+<!--                Subscribe to the Zipply Newsletter. We will never share your information with anyone.-->
+                {% for block in self.section6 %}
+                {% if block.block_type == 'info_line' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h3>
+        </div>
+        <div class="feeling-email-box wow fadeInUp animated">
+            <div class="form-group">
+                <input class="form-control" placeholder="Enter your email address">
+            </div>
+            <a href="#" class="btn btn-medium">Sign Up</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

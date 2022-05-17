@@ -1,0 +1,310 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Blog
+{% endblock %}
+
+{% block body %}
+
+<section class="blog-banner">
+    <div class="blog-slider owl-carousel owl-theme">
+        {% for block in self.section1 %}
+        {% if block.block_type == 'cards' %}
+        {% for card in block.value %}
+        <div class="item">
+<!--            <img src="images/city-banner.jpg" class="img-fluid">-->
+            {% image card.image max-1585x550 class="img-fluid" %}
+            <div class="blog-banner-text">
+                <h1>
+<!--                    How We Saved a Major Supplier 40% on Reverse Logistics-->
+                    {{card.title}}
+                </h1>
+                <span>
+                    <i class="fa fa-calendar" aria-hidden="true"></i> {{card.date}}  <!-- March 30, 2021 -->
+                </span>
+                <p>
+<!--                    Zipply is more than just a logistics and delivery service. What makes us stand out isn’t just our end-to-end solutions for expanding options for same …-->
+                    {{card.text}}
+                </p>
+                <a href="#" class="btn btn-medium">Read More</a>
+<!--                <a href="#" class="btn btn-medium">Read More</a> Call To Action -->
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+<!--        <div class="item">-->
+<!--            <img src="images/drive-banner.jpg" class="img-fluid">-->
+<!--            <div class="blog-banner-text">-->
+<!--                <h1>-->
+<!--                    How We Saved a Major Supplier 40% on Reverse Logistics-->
+<!--                </h1>-->
+<!--                <span>-->
+<!--                    <i class="fa fa-calendar" aria-hidden="true"></i> March 30, 2021-->
+<!--                </span>-->
+<!--                <p>-->
+<!--                    Zipply is more than just a logistics and delivery service. What makes us stand out isn’t just our end-to-end solutions for expanding options for same …-->
+<!--                </p>-->
+<!--                <a href="#" class="btn btn-medium">Read More</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="item">-->
+<!--            <img src="images/drive-banner.jpg" class="img-fluid">-->
+<!--            <div class="blog-banner-text">-->
+<!--                <h1>-->
+<!--                    How We Saved a Major Supplier 40% on Reverse Logistics-->
+<!--                </h1>-->
+<!--                <span>-->
+<!--                    <i class="fa fa-calendar" aria-hidden="true"></i> March 30, 2021-->
+<!--                </span>-->
+<!--                <p>-->
+<!--                    Zipply is more than just a logistics and delivery service. What makes us stand out isn’t just our end-to-end solutions for expanding options for same …-->
+<!--                </p>-->
+<!--                <a href="#" class="btn btn-medium">Read More</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="item">-->
+<!--            <img src="images/drive-banner.jpg" class="img-fluid">-->
+<!--            <div class="blog-banner-text">-->
+<!--                <h1>-->
+<!--                    How We Saved a Major Supplier 40% on Reverse Logistics-->
+<!--                </h1>-->
+<!--                <span>-->
+<!--                    <i class="fa fa-calendar" aria-hidden="true"></i> March 30, 2021-->
+<!--                </span>-->
+<!--                <p>-->
+<!--                    Zipply is more than just a logistics and delivery service. What makes us stand out isn’t just our end-to-end solutions for expanding options for same …-->
+<!--                </p>-->
+<!--                <a href="#" class="btn btn-medium">Read More</a>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</section>
+
+
+<section class="blog-squer-post section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="blog-post-div">
+                    <a href="blog-detail.html">
+                    <div class="blogpost-img">
+<!--                        <img src="images/for-moving.jpg" class="img-fluid">-->
+                        {% for block in self.section2 %}
+                            {% if block.block_type == 'content' %}
+                                {% image block.value.image max-1500x520 class="img-fluid" %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="blogpost-text">
+                        <h6>
+<!--                            What a Quesadilla Is Teaching Us About Logistics-->
+                            {% for block in self.section2 %}
+                                {% if block.block_type == 'content' %}
+                                    {{block.value.title}}
+                                {% endif %}
+                            {% endfor %}
+                        </h6>
+                        <span>
+                             Ben <i class="fa fa-calendar" aria-hidden="true"></i>{% for block in self.section2 %} {% if block.block_type == 'content' %} {{block.value.date}} {% endif %} {% endfor %}  <!-- April 27, 2021 -->
+                        </span>
+                        <p>
+<!--                            If you haven’t heard the good news yet, Chipotle announced last month they were introducing a new item to their menu. That’s right, you can …-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'content' %}
+                                {{block.value.text}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {% for block in self.section3 %}
+                {% if block.block_type == 'cards' %}
+                {% for card in block.value %}
+                <a href="blog-detail.html">
+                    <div class="row mb-3">
+                        <div class="col-12 col-sm-6 pr-sm-0">
+                            <div class="sm-blog-img">
+<!--                                <img src="images/everything-else-img.jpg" class="img-fluid">-->
+                                {% image card.image max-272x186 class="img-fluid" %}
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 pl-sm-0">
+                            <div class="sm-blog-text">
+                                <h6>
+<!--                                    3 Ways Zipply Gets Delivery Right for Businesses-->
+                                    {{card.title}}
+                                </h6>
+                                <span><i class="fa fa-calendar" aria-hidden="true"></i>	{{card.date}} <!-- April 8, 2021 --> </span>
+                                <p>
+<!--                                    Do you wish your last mile delivery program was better? Maybe high costs are an issue, or perhaps you never have enough trucks to move-->
+                                    {{card.text}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+
+<!--                <a href="blog-detail.html">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-12 col-sm-6 pr-0">-->
+<!--                            <div class="sm-blog-img">-->
+<!--                                <img src="images/howwork-img3.jpg" class="img-fluid">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-12 col-sm-6 pl-0">-->
+<!--                            <div class="sm-blog-text">-->
+<!--                                <h6>-->
+<!--                                    3 Ways Zipply Gets Delivery Right for Businesses-->
+<!--                                </h6>-->
+<!--                                <span><i class="fa fa-calendar" aria-hidden="true"></i>	April 8, 2021 </span>-->
+<!--                                <p>-->
+<!--                                    Do you wish your last mile delivery program was better? Maybe high costs are an issue, or perhaps you never have enough trucks to move-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="blog-listing-section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bloglisting-div">
+                    {% for block in self.section4 %}
+                    {% if block.block_type == 'cards' %}
+                    {% for card in block.value %}
+                    <div class="blog-listing-div">
+                        <a href="blog-detail.html">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="blogimgbox">
+<!--                                        <img src="images/basic-img.jpg" class="img-fluid">-->
+                                        {% image card.image max-355x235 class="img-fluid" %}
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="blogtextbox">
+                                        <h6>
+<!--                                            Last Mile Delivery Trends 2021-->
+                                            {{card.title}}
+                                        </h6>
+                                        <span>
+<!--                                        February 10, 2021-->
+                                            {{card.date}}
+                                    </span>
+                                        <p>
+
+
+<!--                                            Last mile delivery has changed drastically in the past year. Logistics analysts report the combination of the pandemic along with the recent holiday rush have-->
+                                            {{card.text}}
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+<!--                    <div class="blog-listing-div">-->
+<!--                        <a href="blog-detail.html">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4">-->
+<!--                                    <div class="blogimgbox">-->
+<!--                                        <img src="images/basic-img.jpg" class="img-fluid">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-8">-->
+<!--                                    <div class="blogtextbox">-->
+<!--                                        <h6>-->
+<!--                                            Last Mile Delivery Trends 2021-->
+<!--                                        </h6>-->
+<!--                                        <span>-->
+<!--                                        February 10, 2021-->
+<!--                                    </span>-->
+<!--                                        <p>-->
+
+
+<!--                                            Last mile delivery has changed drastically in the past year. Logistics analysts report the combination of the pandemic along with the recent holiday rush have-->
+
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="blog-listing-div">-->
+<!--                        <a href="blog-detail.html">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-4">-->
+<!--                                    <div class="blogimgbox">-->
+<!--                                        <img src="images/basic-img.jpg" class="img-fluid">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-8">-->
+<!--                                    <div class="blogtextbox">-->
+<!--                                        <h6>-->
+<!--                                            Last Mile Delivery Trends 2021-->
+<!--                                        </h6>-->
+<!--                                        <span>-->
+<!--                                        February 10, 2021-->
+<!--                                    </span>-->
+<!--                                        <p>-->
+
+
+<!--                                            Last mile delivery has changed drastically in the past year. Logistics analysts report the combination of the pandemic along with the recent holiday rush have-->
+
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="pagination-div">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <span class="page-link">Previous</span>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item">
+                              <span class="page-link">
+                                2
+                                <span class="sr-only">(current)</span>
+                              </span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

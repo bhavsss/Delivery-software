@@ -1,0 +1,514 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+FAQ
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/contact-us-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'image' %}
+        {% image block.value fill-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+    <div class="p-banner-text wow fadeInUp animated">
+        <h1>
+<!--            Have questions? Great.-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'heading' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="whats-zipply-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                What's Zipply?-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="whatszipply-video wow fadeInUp animated">
+            {% for block in self.section2 %}
+            {% if block.block_type == 'cta' %}
+            <iframe style="width: 100%" height="600" src="{{block.value.url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endif %}
+            {% endfor %}
+<!--            <iframe style="width: 100%" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+        </div>
+    </div>
+</section>
+
+<section class="custom-faq-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Customer FAQ-->
+                {% for block in self.section3 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="customerfaq-div wow fadeInDown animated">
+            <div id="faq-accordion" class="collapse-div">
+                {% for block in self.section3 %}
+                {% if block.block_type == 'points' %}
+                {% for point in block.value %}
+                <div class="card">
+                    <div class="card-header" id="faqheading-1">
+                        <h5 class="mb-0">
+                            <a role="button" data-toggle="collapse" href="#faqcollapse-1" aria-expanded="true" aria-controls="faqcollapse-1">
+<!--                                What is FXCopier?-->
+                                {{point.title}}
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="faqcollapse-1" class="collapse show" data-parent="#faq-accordion" aria-labelledby="faqheading-1">
+                        <div class="card-body">
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    Zipply is considered an essential business during COVID-19 and is still fully operational. Zipply drivers are following all CDC recommendations (social distancing, masks, etc).-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    COVID-19 is affecting openings and operations of many businesses and other facilities.We recommend confirming details with all parties involved prior to booking a delivery.-->
+<!--                                </li>-->
+<!--                            </ul>-->
+                            {{point.text|richtext}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-2">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-2" aria-expanded="false" aria-controls="faqcollapse-2">-->
+<!--                                How to get this trade copier?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-2" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-2">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Zipply is a mobile app that instantly helps move, haul and deliver your stuff across town by connecting you with a local driver and pickup truck. We’ve been compared to popular ride sharing apps but instead of moving people, we move people’s stuff.-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                                We work well with Craigslist, wholesale warehouses (like Costco or Sam’s Club), people who need help with small moves, and furniture/retail stores. Essentially, we just want to be available for your next, “I need a truck” moment. Here’s our bread and butter.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-3">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-3" aria-expanded="false" aria-controls="faqcollapse-3">-->
+<!--                                How much does it cost?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-3" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We charge a per mile + per minute fee for delivery, starting at $39.99 . To get something across town it usually costs around $50. Time (and mileage) starts when your driver arrives at the pickup location and ends when your driver is done unloading at the drop off location. In the app, you will always receive an estimate before the delivery.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-4">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-4" aria-expanded="false" aria-controls="faqcollapse-4">-->
+<!--                                Who are my Zipply drivers and are they safe?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-4" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-4">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Zipply drivers are local members of your community that have been Zipply certified. They-->
+<!--                                could be anyone from a military veteran to a college student to an off-duty firefighter-->
+<!--                                or policeman. Safety and customer service are two attributes we pride ourselves on;-->
+<!--                                learn how we <a href="#">keep you safe here.</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-5">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-5" aria-expanded="false" aria-controls="faqcollapse-5">-->
+<!--                                Can I ride with my driver?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-5" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-5">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Our drivers are limited to transporting stuff, not people. Our insurance only covers the items that are being delivered.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-6">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-6" aria-expanded="false" aria-controls="faqcollapse-6">-->
+<!--                                How much stuff can I fit in a Zipply?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-6" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-6">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                A single Zipply can carry 2-3 big and bulky items. Here are three examples that are right up our alley:-->
+<!--                            </p>-->
+<!--                            <ul>-->
+<!--                                <li>Dining room table and chairs</li>-->
+<!--                                <li>A loveseat, arm chair and end table</li>-->
+<!--                                <li>A queen size box spring and mattress and a dresser</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-7">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-7" aria-expanded="false" aria-controls="faqcollapse-7">-->
+<!--                                What if I need two helpers, or if all my stuff won’t fit in a single Zipply?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-7" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-7">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Not a problem! You can request two drivers and two pickup trucks through the Zipply app.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-8">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-8" aria-expanded="false" aria-controls="faqcollapse-8">-->
+<!--                                What is included in my Zipply?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-8" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-8">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                All of our Zipply drivers come equipped with at least four ratchet straps, two bungee cords, two blankets and a tarp to help secure and protect your item(s).-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-9">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-9" aria-expanded="false" aria-controls="faqcollapse-9">-->
+<!--                                Is there anything Zipply will not pickup?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-9" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-9">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Our drivers are strong, but they are not supermen. We focus on items that you and your-->
+<!--                                driver can lift together and put in the back of a truck. In addition, we do not allow-->
+<!--                                the transportation of anything hazardous, illegal or breathing. Believe it or not, some-->
+<!--                                people don’t understand that; <a href="#">see the most absurd move requests here.</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-10">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-10" aria-expanded="false" aria-controls="faqcollapse-10">-->
+<!--                                Are my item(s) protected?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-10" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-10">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Yes! Each delivery is protected by Zipply’s $2M liability policy that guarantees complete peace of mind.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-11">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-11" aria-expanded="false" aria-controls="faqcollapse-11">-->
+<!--                                How do I save money on my Zipply and are promo codes/discounts available?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-11" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-11">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We understand you work hard for your money and we’re passionate about keeping it in your-->
+<!--                                pockets. Because of that, we’re always looking for ways where you can save. Find out-->
+<!--                                about the <a href="#">top five tips & tools you can use to save here.</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-12">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-12" aria-expanded="false" aria-controls="faqcollapse-12">-->
+<!--                                Can I schedule my Zipply ahead of time?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-12" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-12">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Absolutely! You can schedule deliveries in the Zipply app.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-13">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-13" aria-expanded="false" aria-controls="faqcollapse-13">-->
+<!--                                Will my driver help with packing?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-13" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-13">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We’re good at getting your stuff across town when and where you need. So for now, we’re-->
+<!--                                focusing on safely and efficiently transporting your item(s). That being said, we ask-->
+<!--                                that your item(s) are ready to be moved when your driver arrives.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-14">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-14" aria-expanded="false" aria-controls="faqcollapse-14">-->
+<!--                                Can Zipply deliver from IKEA, Costco and other big box stores?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-14" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-14">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Yes! We strive to provide you with an instant, on demand service that is dependable and-->
+<!--                                ready whenever and wherever you are. So whether you’re at a big box store or smaller-->
+<!--                                local one, we’re doing everything we can to provide a fast, easy & convenient way for-->
+<!--                                you to get your purchases home. <a href="#">Tips for store pickups live here.</a>-->
+
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-15">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-15" aria-expanded="false" aria-controls="faqcollapse-15">-->
+<!--                                Can Zipply pick up items I buy on Craigslist for me?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-15" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-15">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Yes! We realize how frustrating it can be to find the perfect piece of furniture on-->
+<!--                                Craigslist or at a garage sale but have no way to get it home. We started Zipply with-->
+<!--                                people just like you in mind; we’ll gladly be there for your-->
+<!--                                it’s-just-too-perfect-to-pass-up moments.-->
+
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-16">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-16" aria-expanded="false" aria-controls="faqcollapse-16">-->
+<!--                                Can Zipply move landscaping items like dirt, trees, plants etc?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-16" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-16">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Our drivers move landscaping items like bagged dirt or concrete, planted trees and other-->
+<!--                                items that are not loose. If you have a question if something can be moved like loose-->
+<!--                                dirt or mulch, download the app, snap a photo and get an estimate. If a driver can-->
+<!--                                transport your item(s) they’ll accept your trip. Contact our support team with any-->
+<!--                                questions. We’re here to help.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-17">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-17" aria-expanded="false" aria-controls="faqcollapse-17">-->
+<!--                                How do I pay for my Zipply & is my information secure?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-17" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-17">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                All transactions take place in-app, which is why a credit or debit card is needed. We-->
+<!--                                don’t store (or even see) any of your card information, it goes straight to BrainTree, a-->
+<!--                                PayPal company that is PCI compliant and guarantees security.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-18">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-18" aria-expanded="false" aria-controls="faqcollapse-18">-->
+<!--                                What if there’s an issue during my Zipply trip?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-18" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-18">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                If you have any questions, concerns or issues please contact us immediately:-->
+<!--                                Support@Zipply.com. We’ll do everything in our power to make it right.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="whyzipply-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Why Zipply?-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section4 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        Craigslist-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        Not only safe but way more convenient. Get your new couch in your living room easier than ever before.-->
+                        {{card.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>Shopping Made Simple</h6>-->
+<!--                    <p>-->
+<!--                        Not only safe but way more convenient. Get your new couch in your living room easier than ever before.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-circle-o-notch" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>Sleep Easy</h6>-->
+<!--                    <p>-->
+<!--                        Not only safe but way more convenient. Get your new couch in your living room easier than ever before.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                       <i class="fa fa-heart" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>Charity</h6>-->
+<!--                    <p>-->
+<!--                        Not only safe but way more convenient. Get your new couch in your living room easier than ever before.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-recycle" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>Hauling Away Junk</h6>-->
+<!--                    <p>-->
+<!--                        Not only safe but way more convenient. Get your new couch in your living room easier than ever before.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-home" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>Elderly Help</h6>-->
+<!--                    <p>-->
+<!--                        Not only safe but way more convenient. Get your new couch in your living room easier than ever before.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

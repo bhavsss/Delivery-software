@@ -1,0 +1,252 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Drive
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/drive-banner.jpg" class="img-fluid">-->
+        {% for block in self.section1 %}
+        {% if block.block_type == 'banner_image' %}
+            {% image block.value fill-1585x555 class="img-fluid" %}
+        {% endif %}
+        {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+            <h1>
+<!--                Zipply: The Ultimate Side Hustle.-->
+                {% for block in self.section1 %}
+                {% if block.block_type == 'banner_title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+                <span>
+<!--                    <a href="#driverequrements" class="btn btn-large">Apply Now</a>-->
+                    {% for block in self.section1 %}
+                    {% if block.block_type == 'banner_cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn btn-large">{{block.value.button_text}}</a>
+                    {% endif %}
+                    {% endfor %}
+                </span>
+            </h1>
+        </div>
+</section>
+
+<section class="whyzipply-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Why Zipply?-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section2 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-usd" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        EARN EXTRA CASH-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        Who couldn’t use more money? Earn over $40/hour driving with Zipply.-->
+                        {{card.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        GET MOVING-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Zipply drivers average 1,200 steps per trip. Doing a few Zipplys a day makes you more active than most Americans.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WORK WHEN YOU WANT-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Leave the onerous 9-5 behind. With Zipply, you decide when you’re available.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="for-delivery-section">
+    <div class="for-delivert-div">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivery-img-box wow fadeInLeftBig animated">
+<!--                        <img src="images/basic-img.jpg" class="img-fluid">-->
+                        {% for block in self.section3 %}
+                        {% if block.block_type == 'banner_image' %}
+                            {% image block.value fill-800x680 class="img-fluid" %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivert-text-box wow fadeInRightBig animated">
+                        <div class="forfel-title mb-5">
+                            <h1>
+<!--                                The Basics-->
+                                {% for block in self.section3 %}
+                                {% if block.block_type == 'heading' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+                            </h1>
+                        </div>
+                        <ul class="forfel-ul forfel-after">
+                            {% for block in self.section3 %}
+                            {% if block.block_type == 'points' %}
+                            {% for point in block.value %}
+                            <li>
+                            <span>
+                                <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                            </span>
+                                <h6>
+<!--                                    Strong But Not Supermen-->
+                                    {{point.title}}
+                                </h6>
+                                <p>
+<!--                                    Zipply drivers help with the loading & unloading. We ask that you're able to lift-->
+<!--                                    and carry up to 125 pounds because oak desks are heavy.-->
+                                    {{point.text}}
+                                </p>
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-car" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Beyond the Beater</h6>-->
+<!--                                <p>-->
+<!--                                    Don't get us wrong; vintage trucks are really cool but we ask that all of our Zipply-->
+<!--                                    drivers sport 2006s or newer.-->
+<!--                                </p>-->
+<!--                            </li>-->
+
+<!--                            <li>-->
+<!--                                <span>-->
+<!--                                    <i class="fa fa-lock" aria-hidden="true"></i>-->
+<!--                                </span>-->
+<!--                                <h6>Lock It Down</h6>-->
+<!--                                <p>-->
+<!--                                    During transit, we prefer that customer's items stay in the truck. Therefore, a-->
+<!--                                    basic knowledge of how to strap & secure items is necessary.-->
+<!--                                </p>-->
+<!--                            </li>-->
+
+<!--                            <li>-->
+<!--                                <span>-->
+<!--                                    <i class="fa fa-link" aria-hidden="true"></i>-->
+<!--                                </span>-->
+<!--                                <h6>Straps On Straps</h6>-->
+<!--                                <p>-->
+<!--                                    At minimum, we ask that Zipply drivers have four ratchet straps, two bungee cords,-->
+<!--                                    two moving blankets and a tarp... but if we know anything about truck owners, all of-->
+<!--                                    this is most likely on hand.-->
+<!--                                </p>-->
+<!--                            </li>-->
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="driverequrements" class="drive-req-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title mb-5 text-center wow fadeInUp animated">
+            <h1>
+<!--                Driver Requirements-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            <p>
+<!--                Please confirm all of the following in order to apply:-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'info_line' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+        <div class="driver-requirment-form text-center wow fadeInDown animated">
+            {% for block in self.section4 %}
+            {% if block.block_type == 'conditions' %}
+            {% for condition in block.value %}
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="driverreqcheck1">
+                <label class="custom-control-label" for="driverreqcheck1">
+<!--                    I am 18 or older.-->
+                    {{condition}}
+                </label>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="custom-control custom-checkbox">-->
+<!--                <input type="checkbox" class="custom-control-input" id="driverreqcheck2">-->
+<!--                <label class="custom-control-label" for="driverreqcheck2"> I can lift and carry up to 125 pounds. </label>-->
+<!--            </div>-->
+<!--            <div class="custom-control custom-checkbox">-->
+<!--                <input type="checkbox" class="custom-control-input" id="driverreqcheck3">-->
+<!--                <label class="custom-control-label" for="driverreqcheck3"> My vehicle is 2006 or newer. </label>-->
+<!--            </div>-->
+<!--            <div class="custom-control custom-checkbox">-->
+<!--                <input type="checkbox" class="custom-control-input" id="driverreqcheck4">-->
+<!--                <label class="custom-control-label" for="driverreqcheck4">  My vehicle is a pickup truck, cargo/sprinter van, or SUV with a trailer. </label>-->
+<!--            </div>-->
+            <div class="medium-btn-div">
+<!--                <a href="#" class="btn btn-medium"> Apply Now </a>-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'cta' %}
+                <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,87 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Where to Next
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/contact-us-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'banner_image' %}
+        {% image block.value fill-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+
+<!--            Want Zipply in your neighborhood?-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+
+        </h1>
+    </div>
+
+</section>
+
+<section class="whyzipply-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Tell us where you'd like to see Zipply next!-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            <p>
+<!--                We will never share your information with anyone.-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'sub_heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+        <div class="wantform">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="First & Last Name">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="City & State">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="How'd you hear about us?"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <a href="#" class="btn btn-large">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+

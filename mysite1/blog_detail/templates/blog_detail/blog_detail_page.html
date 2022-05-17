@@ -1,0 +1,262 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Blog Detail
+{% endblock %}
+
+{% block body %}
+
+<section class="blog-banner">
+<!--    <img src="images/career-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'image' %}
+        {% image block.value max-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+    <div class="blog-banner-text">
+        <h1>
+
+<!--            Last Mile Delivery Trends 2021-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+
+        </h1>
+        <span>
+                    <i class="fa fa-calendar" aria-hidden="true"></i> {% for block in self.section1 %} {% if block.block_type == 'date' %} {{block.value}} {% endif %} {% endfor %} <!-- March 30, 2021 -->
+                </span>
+    </div>
+</section>
+
+
+<section class="blog-detail-section section-padding">
+    <div class="container">
+        <div class="blog-detail-text">
+<!--            <p>-->
+<!--                Last mile delivery has changed drastically in the past year. Logistics analysts report the combination-->
+<!--                of the pandemic along with the recent holiday rush have pushed all of delivery ten years forward in a-->
+<!--                sixth month period.¹-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                What are businesses of all sizes doing to adapt and improve their delivery plans? The main focus heading-->
+<!--                into 2021 is designing a last mile delivery system that keeps consumer experience top of mind during-->
+<!--                each stage of the delivery. Customers want flexible, convenient delivery with multiple scheduling and-->
+<!--                service options for each purchase. Whether it’s a small item bought online or a big & bulky item-->
+<!--                delivered to the front door, customers have high expectations. We’re going to walk through some of the-->
+<!--                top delivery solutions that should be on your list to ensure your customers are delighted.-->
+<!--            </p>-->
+
+            {% for block in self.section2 %}
+            {% if block.block_type == 'text' %}
+                <p>
+                {{block.value|richtext}}
+                </p>
+            {% endif %}
+            {% endfor %}
+
+            <div class="subsc-box">
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-4">
+                        <h6>
+                            Subscribe to the Zipply Business Newsletter.
+                        </h6>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <input class="form-control" placeholder="Enter your email address">
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <a href="#" class="btn red-btn">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-title mb-5">
+                <h1>
+<!--                    Top Four delivery Trends of 2021-->
+                    {% for block in self.section3 %}
+                    {% if block.block_type == 'heading' %}
+                        {{block.value}}
+                    {% endif %}
+                    {% endfor %}
+                </h1>
+            </div>
+
+            {% for block in self.section3 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="top-content">
+                <h6>
+<!--                    1. No Same Day Delivery? Dealbreaker for Consumers-->
+                    {{card.title}}
+                </h6>
+<!--                <p>-->
+<!--                    Adding a same day delivery option should be priority number one for businesses who don’t already offer it. 56% of consumers expect same day delivery, 61% are willing to pay more for it.² Going even further, 24 % of consumers will pay more to receive their purchases within two hours.³-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Giving your customers same day options is a major step in the right direction when you are updating your logistics strategy for the new year. Not only can it set you apart from competition, but it gives your business another great opportunity to delight your customers and drive repeat business.-->
+<!--                </p>-->
+                <p>
+                    {{card.text|richtext}}
+                </p>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="top-content">-->
+<!--                <h6>-->
+<!--                    2. Top Notch Customer Support is Key-->
+<!--                </h6>-->
+<!--                <p>-->
+<!--                    Boosting your customer support seems like a no-brainer, but implementing a system and hiring enough staff to provide a smoothly run, informative customer service experience is a challenge. Having a well trained, friendly team who knows your delivery system inside and out brings incredible value to your business and adds a human touch that many companies do not focus on.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    As of 2019, the average Net Promoter Score for last mile delivery services was only +9. A major reason for the low score is the lack of customer support. There are clearly a lot of moving parts within each delivery, but with limited resources dedicated to keeping customers in the know and answering questions, customers feel out of the loop and confused. However, surrounding your products with a customer support team that cares for your customers is a great way to build a positive perception of your business beyond just your products.-->
+<!--                </p>-->
+<!--                <div class="text-center">-->
+<!--                    <a href="#" class="btn btn-large">Free Delivery Analysis</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="top-content">-->
+<!--                <h6>-->
+<!--                    3. Avoid the "Where is it?" Question with Tracking & Transparency-->
+<!--                </h6>-->
+<!--                <p>-->
+<!--                    Real time tracking and providing customers with transparency during their delivery is closely related to customer support. If anything changes along the delivery route or the item is delayed at all, communicating with the customer and giving them access to the tracking tools the pros use is crucial. Not only does tracking and transparency give customers peace of mind, it also automates a large portion of your customer service time that could be focused elsewhere.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--            <div class="top-content">-->
+<!--                <h6>-->
+<!--                    4. Customers Demand Choices for Delivery Service-->
+<!--                </h6>-->
+<!--                <p>-->
+<!--                    Not everyone wants the same level of delivery service for their items. Adding options such as-->
+<!--                    threshold delivery, contactless drop off, room of choice delivery, and white glove service give your-->
+<!--                    customers the flexibility they need. 2020 has highlighted the importance of different service levels-->
+<!--                    with the emergence of buy online, deliver from store (BODFS) and safe distance deliveries. This-->
+<!--                    trend is going to continue as contactless delivery remains a priority and businesses are adding-->
+<!--                    variations of their standard delivery.-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    In the past year at Zipply, we have seen triple-digit growth in threshold delivery requests along-->
+<!--                    with double-digit growth in requests for a “white-glove” level of service. Customers want their-->
+<!--                    items delivered safely, but also don’t want to struggle with assembly and large item placement in-->
+<!--                    their home. Many would rather have an all-in-one delivery experience so they can put their new-->
+<!--                    purchase to use right away.-->
+<!--                </p>-->
+<!--            </div>-->
+
+            <div class="top-content">
+                <div class="section-title">
+                    <h1>
+
+<!--                        Zipply is the Leader in Same Day Delivery-->
+                        {% for block in self.section4 %}
+                        {% if block.block_type == 'title' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+
+                    </h1>
+                </div>
+<!--                <p>-->
+<!--                    Zipply is a big and bulky, last mile service that unlocks on-demand delivery capabilities by-->
+<!--                    combining a unique tech-enabled platform with a virtual fleet of delivery professionals. We can be-->
+<!--                    your main source for last mile delivery, or an extension of your existing logistics network for-->
+<!--                    large item, same day delivery. We’ve activated same day delivery for top brands nationwide and-->
+<!--                    continue to grow, bringing an enhanced delivery experience to industry-leading companies. Learn how-->
+<!--                    Zipply collaborated with a national retailer and boost their sales by over 20% and supercharge your-->
+<!--                    own logistics network in three easy steps:-->
+<!--                </p>-->
+<!--                <ol class="pl-5 mt-5">-->
+<!--                    <li>-->
+<!--                        Fill out the form below.-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        Connect with our business partnership team so we can better understand your needs and answer any questions.-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        From there, our team will build a custom solution, catered to your business. This features flexible pricing, real-time delivery tracking, a tailored analytics dashboard and a dedicated support team, available seven days a week. On average, going live takes less than a week.-->
+<!--                    </li>-->
+<!--                </ol>-->
+                <p>
+                    {% for block in self.section4 %}
+                    {% if block.block_type == 'text' %}
+                        {{block.value|richtext}}
+                    {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ourteam-let-section section-padding bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section-title white-title mb-5">
+                    <h1>
+<!--                        Our team specializes in:-->
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'part1' %}
+                            {{block.value.title}}
+                        {% endif %}
+                        {% endfor %}
+                    </h1>
+                </div>
+                <div class="ourteam-list">
+                    <ul>
+<!--                        <li>On-demand home delivery (from warehouse or store)</li>-->
+<!--                        <li>Expedited and hot shot business delivery</li>-->
+<!--                        <li>Curbside pickup with threshold delivery (no personal contact)</li>-->
+<!--                        <li>Same-day, commercial delivery</li>-->
+<!--                        <li>Buy online & either pickup in store (BOPIS) or deliver from store or warehouse.</li>-->
+<!--                        <li>Reverse logistics</li>-->
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'part1' %}
+                        {% for point in block.value.points %}
+                            <li>{{point}}</li>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="section-title white-title mb-5">
+                    <h1>
+                        Our team specializes in:
+                    </h1>
+                </div>
+                <div class="lettalk-div">
+                    <div class="form-group">
+                        <label>First and Last Name</label>
+                        <input class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Business Website</label>
+                        <input class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control">
+                    </div>
+                    <a href="#" class="btn btn-medium">Submit</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

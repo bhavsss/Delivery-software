@@ -1,0 +1,412 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Search List
+{% endblock %}
+
+{% block body %}
+
+<section class="banner-section checkout-banner">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="banner-content wow fadeInLeftBig">
+                    <div class="banner-title color-red">
+                        <h1>
+<!--                            You Want It<br>-->
+<!--                            We Get It on Time-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'heading' %}
+                                {{block.value|richtext}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <h2 class="font-weight-normal">
+<!--                            Pickup and Delivery Anywhere-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'sub_heading' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h2>
+                        <p>
+<!--                            Fast Food, Dessert, Burger, Sandwich, Bakery, Pizza,<br>-->
+<!--                            Documents, Laundry and Anythings...-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'text_info' %}
+                                {{block.value|richtext}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xs-6">
+                <div class="banner-photo text-center wow fadeInRightBig">
+<!--                    <img src="images/listing-banner.png" alt="banner" class="img-fluid">-->
+                    {% for block in self.section1 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-685x510 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="delivery-pickup-div">
+    <div class="container-fluid">
+        <div class="delpic-div">
+            <div class="delpic-tab-div">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Delivery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pickup</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="delpic-tab-content">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="deliverycontentbox">
+                            <a href="#"><img src="{% static 'images/icon-metro-location.svg' %}" alt="icon"> Newport Beach</a>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="deliverycontentbox">
+                            <a href="#">Pickup Tab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="top-category-section">
+    <div class="container-fluid">
+        <div class="top-category-slider">
+            <div class="package-title">
+                <h4 class="c-title">
+<!--                    Top Categories-->
+                    {% for block in self.section2 %}
+                    {% if block.block_type == 'heading' %}
+                        {{block.value}}
+                    {% endif %}
+                    {% endfor %}
+                </h4>
+            </div>
+            <div class="cate-slider-div">
+                <div class="category-slider owl-carousel owl-theme">
+                    {% for block in self.section2 %}
+                    {% if block.block_type == 'cards' %}
+                    {% for card in block.value %}
+                    <div class="item">
+                        <div class="product-category">
+                            <a href="#">
+                                <div class="product-cat-img">
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+                                    {% image card.img fill-345x445 %}
+                                </div>
+                                <h6>
+<!--                                    Fast Food-->
+                                    {{card.text}}
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="item">-->
+<!--                        <div class="product-category">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-cat-img">-->
+<!--                                    <img src="images/product-category.jpg" alt="img">-->
+<!--                                </div>-->
+<!--                                <h6>Fast Food</h6>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="restourants-product-section">
+    <div class="container-fluid">
+        <div class="search-product-list">
+            <div class="package-title">
+                <h4 class="c-title">
+<!--                    Top Restaurants-->
+                    {% for block in self.section3 %}
+                    {% if block.block_type == 'heading' %}
+                        {{block.value}}
+                    {% endif %}
+                    {% endfor %}
+                </h4>
+            </div>
+            <div class="restorant-product-list">
+                <div class="row">
+                    {% for block in self.section3 %}
+                    {% if block.block_type == 'cards' %}
+                    {% for card in block.value %}
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                        <div class="product-card">
+                            <a href="#">
+                                <div class="product-img">
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+                                    {% image card.img fill-345x445 class="img-fluid" %}
+                                </div>
+                                <div class="product-detail">
+                                    <h6>
+<!--                                        Subway -->
+                                        {{card.name}}
+                                        <img class="right-cir-icon" src="{% static 'images/right-circle.svg' %}">
+                                    </h6>
+                                    <span class="popular-tag">
+<!--                                        Popular-->
+                                        {{card.tag}}
+                                    </span>
+                                    <ul>
+                                        <li>
+<!--                                            $2.99 Delivery-->
+                                            {{card.price_delivery}}
+                                        </li>
+                                        <li>
+<!--                                            40-50 Min.-->
+                                            {{card.estimated_time}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">-->
+<!--                        <div class="product-card">-->
+<!--                            <a href="#">-->
+<!--                                <div class="product-img">-->
+<!--                                    <img src="images/product-category.jpg" class="img-fluid" alt="img">-->
+<!--                                </div>-->
+<!--                                <div class="product-detail">-->
+<!--                                    <h6>Subway <img class="right-cir-icon" src="images/right-circle.svg"></h6>-->
+<!--                                    <span class="popular-tag">Popular</span>-->
+<!--                                    <ul>-->
+<!--                                        <li>-->
+<!--                                            $2.99 Delivery-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            40-50 Min.-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

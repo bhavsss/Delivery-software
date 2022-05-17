@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon_1.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
+</head>
+<style>
+
+</style>
+<body>
+
+<header>
+    <div class="main-header">
+        <div class="navigation-wrap start-header start-style">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <a class="navbar-brand" href="index.html">
+                                <img src="{% static 'images/Logo.png' %}" alt="logo" width="200">
+                            </a>
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.html">Home</a>
+                                    </li>
+                                    <li class="nav-item dropdown dropdown-slide dropdown-hover">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Faq
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="faq-business.html">For Businesses</a>
+                                            <a class="dropdown-item" href="faqs.html">For Individuals</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown dropdown-slide dropdown-hover">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Services
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="business-services.html">For Businesses</a>
+                                            <a class="dropdown-item" href="service.html">For Individuals</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="cities.html">Cities</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="for-individuals.html">For Individuals</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="drive.html">Drive with us</a>
+                                    </li>
+                                    <li class="nav-item dropdown dropdown-slide dropdown-hover">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            About
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="aboutus.html">About</a>
+                                            <a class="dropdown-item" href="blog.html">Blog</a>
+                                            <a class="dropdown-item" href="careers.html">Careers</a>
+                                            <a class="dropdown-item" href="contactus.html">Contact</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Signup</a>
+                                    </li>
+                                    <li class="nav-item cart-item">
+                                        <a class="nav-link" href="#">
+                                            <img src="{% static 'images/cart_icon.png' %}" alt="cart">
+                                            <span>2+</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% block body %}
+{% endblock %}
+
+<footer>
+    <div class="main-footer">
+        <div class="container-fluid">
+            <div class="footer-logo">
+                <img src="{% static 'images/Footer-Logo.png' %}" alt="logo">
+            </div>
+            <div class="footer-link-div">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer-linkbox">
+                            <h6>Our Company</h6>
+                            <ul>
+                                <li>
+                                    <a href="aboutus.html">About</a>
+                                </li>
+                                <li>
+                                    <a href="careers.html">Careers</a>
+                                </li>
+                                <li>
+                                    <a href="blog.html">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#">Press & Media</a>
+                                </li>
+                                <li>
+                                    <a href="#">Develops</a>
+                                </li>
+                                <li>
+                                    <a href="#">API Docs</a>
+                                </li>
+                                <li>
+                                    <a href="#">Civic Labs</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="footer-linkbox">
+                            <h6>Merchants</h6>
+                            <ul>
+                                <li>
+                                    <a href="#">Sell on ZIPPLY</a>
+                                </li>
+                                <li>
+                                    <a href="#">Restaurants</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-linkbox">
+                            <h6>Fleet</h6>
+                            <ul>
+                                <li>
+                                    <a href="#">Join the Fleet</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-linkbox">
+                            <h6>Customer Support</h6>
+                            <ul>
+                                <li>
+                                    <a href="#">Customer Help</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-linkbox">
+                            <h6>More</h6>
+                            <ul>
+                                <li>
+                                    <a href="#">Delivery Near Me</a>
+                                </li>
+                                <li>
+                                    <a href="#">Takeout Near Me</a>
+                                </li>
+                                <li>
+                                    <a href="#">Pizza Near Me</a>
+                                </li>
+                                <li>
+                                    <a href="#">Thai Near Me</a>
+                                </li>
+                                <li>
+                                    <a href="#">Mexican Near Me</a>
+                                </li>
+                                <li>
+                                    <a href="#">Alcohol Delivery</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-linkbox">
+                            <h6>Follow Us</h6>
+                            <ul>
+                                <li>
+                                    <a href="#">Twitter</a>
+                                </li>
+                                <li>
+                                    <a href="#">Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="#">Instagram</a>
+                                </li>
+                                <li>
+                                    <a href="#">Snapchat</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="top-cities-list">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="top-cities-div">
+                            <h6>
+                                Top Cities
+                            </h6>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        San Francisco
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Chicago
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Orange County
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Seattle
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Los Angeles
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Miami
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Phoenix
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Atlanta
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        New York City
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Washington DC
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        San Diego
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Las Vegas
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="b-footer-content">
+                        <h6><img src="{% static 'images/logo-icon.svg' %}"> ZIPPY is the largest, most reliable on-demand delivery and pickup platform.</h6>
+                        <p>Able to deliver anytime from anywhere, ZIPPLY is the food delivery. grocery, whatever-you-can-think-of delivery app to bring what you crave right to your door.</p>
+                        <span>©2021 GETZIPPLY INC TERMS PRIVACY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+</html>
+

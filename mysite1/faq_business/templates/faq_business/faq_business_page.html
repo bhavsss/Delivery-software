@@ -1,0 +1,567 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+FAQ - Business
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/drive-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'banner_image' %}
+        {% image block.value fill-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+    <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            Transform Your Business-->
+<!--            <span>-->
+<!--            Partnership FAQ-->
+<!--        </span>-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="final-mine-section section-padding bg-black pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="final-mile-content wow fadeInLeft animated">
+                    <div class="section-title white-title">
+                        <span>
+<!--                            DELIVERY IN HOURS, NOT DAYS-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'title1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </span>
+                        <h1>
+<!--                            final mile made simple-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'title2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <p>
+<!--                            Question? We’d love to help. Get in touch with one of our delivery consultants today.-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'text_info' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="medium-btn-div">
+                        {% for block in self.section2 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="business-demo.html" class="btn btn-medium">Learn More</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="final-mine-img wow fadeInRight animated">
+<!--                    <img src="images/zipplydisplay.png" class="img-fluid">-->
+                    {% for block in self.section2 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-415x340 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="custom-faq-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Partnership FAQ-->
+                {% for block in self.section3 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="customerfaq-div wow fadeInUp animated">
+            <div id="faq-accordion" class="collapse-div">
+                {% for block in self.section3 %}
+                {% if block.block_type == 'points' %}
+                {% for point in block.value %}
+                <div class="card">
+                    <div class="card-header" id="faqheading-1">
+                        <h5 class="mb-0">
+                            <a role="button" data-toggle="collapse" href="#faqcollapse-1" aria-expanded="true" aria-controls="faqcollapse-1">
+<!--                                Should delivery really be a priority for me and my business?-->
+                                {{point.title}}
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="faqcollapse-1" class="collapse show" data-parent="#faq-accordion" aria-labelledby="faqheading-1">
+                        <div class="card-body">
+<!--                            <p>-->
+<!--                                Absolutely! Customers are becoming more influenced by their supply chain experience than by any other types of interactions.-->
+<!--                            </p>-->
+<!--                            <ul>-->
+<!--                                <li>55% of shoppers move to competition when delivery isn’t fast enough. (AlixPartners survey – 2019)</li>-->
+<!--                                <li>89% of consumers now define fast delivery as same day. (Multichannel Merchant article – 2020)</li>-->
+<!--                                <li>61% of consumers said offering a same-day delivery option would increase their brand loyalty. (Capgemini Research Institute study- 2020)</li>-->
+<!--                                <li>Consumer demand for home delivery of large product and appliance categories has grown over 40% since 2015, the two fastest growing product categories outside of food & grocery. (Stifel Industry report – 2018)</li>-->
+<!--                            </ul>-->
+                            {{point.text|richtext}}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-2">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-2" aria-expanded="false" aria-controls="faqcollapse-2">-->
+<!--                                What type of services and options do you provide?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-2" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-2">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We can facilitate in many different types of delivery, however, we specialize in big & bulky, final mile, same-day delivery. Our core capabilities include:-->
+<!--                            </p>-->
+<!--                            <ul>-->
+<!--                                <li>Home delivery (retail store to home, DC/warehouse to home)</li>-->
+<!--                                <li>Reverse logistics (home-to-store/warehouse, store-to-warehouse)</li>-->
+<!--                                <li>Local carrier (store-to-store, warehouse-to-store, expedited exclusive use deliveries)</li>-->
+<!--                            </ul>-->
+<!--                            <p>-->
+<!--                                More specifically, our service levels vary depending on the needs of our partners and their customers. These include but are not limited to:-->
+<!--                            </p>-->
+<!--                            <ul>-->
+<!--                                <li>Threshold delivery</li>-->
+<!--                                <li>Room of choice</li>-->
+<!--                                <li>White glove</li>-->
+<!--                                <li>Simple assembly / installation</li>-->
+<!--                                <li>Custom partner requests</li>-->
+<!--                            </ul>-->
+<!--                            <p>-->
+<!--                                Learn more on our <a href="#">business services page.</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-3">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-3" aria-expanded="false" aria-controls="faqcollapse-3">-->
+<!--                                How do I access your service and schedule deliveries?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-3" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-3">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We collaborate with our partners to provide custom solutions that best suits your team and your customers. Our platform facilitates delivery through web-based portals, mobile applications and various levels of integration including API, EDI, POS and e-Commerce.-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                                See our <a href="#">tech first hand and find out what we can do for your business here. </a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-4">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-4" aria-expanded="false" aria-controls="faqcollapse-4">-->
+<!--                                Tell me more about your delivery professionals.-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-4" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-4">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                All delivery professionals must pass and adhere to our stringent 16-point safety-->
+<!--                                standard to be Zipply Certified™. This helps us ensure the highest level of quality.-->
+<!--                                Additional information about our delivery professionals is below:-->
+<!--                            </p>-->
+<!--                            <ul>-->
+<!--                                <li>Less than 15% of driver applicants are able to pass Zipply certification requirements</li>-->
+<!--                                <li>99.4% of Zipply drivers on our platform are rated 5/5 stars.</li>-->
+<!--                                <li>Our safety standard includes background check, vehicle inspections, interviews, training and a perfect 100% on the final examination.</li>-->
+<!--                                <li>100+ delivery metrics are analyzed by our platform in real time via machine learning to ensure customers experience a consistent, industry-leading service.</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-5">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-5" aria-expanded="false" aria-controls="faqcollapse-5">-->
+<!--                                What types of delivery vehicles are in your network?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-5" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-5">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Delivery vehicles in our network include pickup trucks, sprinter vans and cargo vans.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-6">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-6" aria-expanded="false" aria-controls="faqcollapse-6">-->
+<!--                                What are your delivery hours?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-6" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-6">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Drivers are available 7 days/week, 365 days/year. Core service hours are 7:30AM – 8:00PM CST with ability to service deliveries outside these hours.-->
+<!--                            </p>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-7">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-7" aria-expanded="false" aria-controls="faqcollapse-7">-->
+<!--                                How quickly do your delivery professionals arrive on site for pick up?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-7" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-7">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We deliver an industry leading average response time of 22 minutes for our on-demand option. This is our standard process; there is no up-charge for this service. We also provide the option to schedule deliveries ahead of time if preferred.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-8">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-8" aria-expanded="false" aria-controls="faqcollapse-8">-->
+<!--                                How does pricing work?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-8" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-8">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                We utilize custom, value based pricing based on our partner’s strategy and needs.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-9">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-9" aria-expanded="false" aria-controls="faqcollapse-9">-->
+<!--                                Are there opportunities for volume-based pricing?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-9" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-9">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Yes, we collaborate with our partners to grow together. Learn more and get in touch with one of our delivery specialists at  <a href="#">Zipply.com/business.</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-10">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-10" aria-expanded="false" aria-controls="faqcollapse-10">-->
+<!--                                What is the standard pickup truck capacity?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-10" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-10">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Our standard vehicle weight capacity is 2,000 pounds or 2 pallets. Minimum cubic dimensions are 72” height, 90” length, 50” width.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-11">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-11" aria-expanded="false" aria-controls="faqcollapse-11">-->
+<!--                                What are your on-time delivery statistics?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-11" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-11">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Given our on-demand business model, we consistently (99.6%) meet a 1-hour delivery window, which exceeds the industry standard of multi-hour delivery windows. The customer is always aware of our driver’s location and ETA, down to the minute. We hold ourself to a higher standard to deliver an exceptional customer experience far beyond industry standards.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-12">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-12" aria-expanded="false" aria-controls="faqcollapse-12">-->
+<!--                                What type of technology do you use? Are integration options currently available?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-12" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-12">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Yes! Our platform is built on a sophisticated, elastic load-balancing, micro-service architecture. From day one, it has been designed to handle rapid shifts in demand without jeopardizing the technical flexibility required to serve our customer’s needs.-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                                Our team has vast experience in architecting and implementing real-time integrations with 3rd party POS, payment gateways, middleware, ERP systems, etc. Such integrations are typically handled with API endpoints on one or both sides.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="card">-->
+<!--                    <div class="card-header" id="faqheading-13">-->
+<!--                        <h5 class="mb-0">-->
+<!--                            <a class="collapsed" role="button" data-toggle="collapse" href="#faqcollapse-13" aria-expanded="false" aria-controls="faqcollapse-13">-->
+<!--                                What if there is an issue during a delivery?-->
+<!--                            </a>-->
+<!--                        </h5>-->
+<!--                    </div>-->
+<!--                    <div id="faqcollapse-13" class="collapse" data-parent="#faq-accordion" aria-labelledby="faqheading-13">-->
+<!--                        <div class="card-body">-->
+<!--                            <p>-->
+<!--                                Our award-winning customer service team is standing by 7 days a week, 365 days a year to-->
+<!--                                ensure a consistent, industry-leading experience for you and your customers. Our average-->
+<!--                                support response time is 75 seconds and our job isn’t finished until you’re happy.-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="real-customer-section section-padding red-bg">
+    <div class="container">
+        <div class="section-title white-title mb-5 wow fadeInDown animated">
+            <span>
+<!--                Zipply USE CASES-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading1' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </span>
+            <h1>
+<!--                Real Customers, Real Results-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading2' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section4 %}
+            {% if block.block_type == 'partners' %}
+            {% for partner in block.value %}
+            <div class="col-md-6">
+                <div class="partner-div-box wow fadeInLeft animated">
+                    <div class="partner-title">
+                        <h6>
+<!--                            Partner A-->
+                            {{partner.name}}
+                        </h6>
+                        <p>
+<!--                            LARGE NATIONAL RETAILER-->
+                            {{partner.service}}
+                        </p>
+                    </div>
+                    <div class="partner-detail">
+                        <ul>
+                            {% for point in partner.points %}
+                            <li>
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <h6>
+<!--                                    Their <span>Pain Point</span>-->
+                                    {{point.title}}
+                                </h6>
+                                <p>
+<!--                                    The partner’s delivery order process was clunky, hard to navigate, and confusing to manage.-->
+                                    {{point.text}}
+                                </p>
+                            </li>
+                            {% endfor %}
+<!--                            <li>-->
+<!--                                <i class="fa fa-puzzle-piece" aria-hidden="true"></i>-->
+<!--                                <h6>-->
+<!--                                    Our  <span>Solution</span>-->
+<!--                                </h6>-->
+<!--                                <p>-->
+<!--                                    Created a custom web portal for store employees and integrated directly into their existing POS/TMS.-->
+<!--                                </p>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <i class="fa fa-quote-left" aria-hidden="true"></i>-->
+<!--                                <h6>-->
+<!--                                    From   <span>the Customer</span>-->
+<!--                                </h6>-->
+<!--                                <p>-->
+<!--                                    “With Zipply, our customers are receiving their product 3x faster on average and returns for damages or incorrect orders have been reduced by 11%.”-->
+<!--                                </p>-->
+<!--                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+<!--            <div class="col-md-6">-->
+<!--                <div class="partner-div-box wow fadeInRight animated">-->
+<!--                    <div class="partner-title">-->
+<!--                        <h6>Partner B</h6>-->
+<!--                        <p>-->
+<!--                            LOGISTICS SERVICES-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                    <div class="partner-detail">-->
+<!--                        <ul>-->
+<!--                            <li>-->
+<!--                                <i class="fa fa-info-circle" aria-hidden="true"></i>-->
+<!--                                <h6>-->
+<!--                                    Their <span>Pain Point</span>-->
+<!--                                </h6>-->
+<!--                                <p>-->
+<!--                                    Customers had large delivery windows with little to no status updates or tracking visibility.-->
+<!--                                </p>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <i class="fa fa-puzzle-piece" aria-hidden="true"></i>-->
+<!--                                <h6>-->
+<!--                                    Our  <span>Solution</span>-->
+<!--                                </h6>-->
+<!--                                <p>-->
+<!--                                    Created a custom workflow that consumed the partner’s existing endpoints.-->
+<!--                                </p>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <i class="fa fa-quote-left" aria-hidden="true"></i>-->
+<!--                                <h6>-->
+<!--                                    From   <span>the Customer</span>-->
+<!--                                </h6>-->
+<!--                                <p>-->
+<!--                                    “The tracking visibility that Zipply provides far exceeds any delivery service we’ve experienced. It seems like we’re receiving constant positive feedback, boosting our final mile NPS by almost 20 points.”-->
+<!--                                </p>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade talktoexpert-modal" id="talktoexpert-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="talkexpert-div">
+                    <ul>
+                        <li>
+                            <div class="rexp-box">
+                                <span>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                                <h6>
+                                    Partner with us
+                                </h6>
+                                <p>
+                                    Deliver in hours, not days, with our intelligent logistics platform. Zipply’s custom offering integrates seamlessly into your existing processes.
+                                </p>
+                                <a href="business.html" class="btn btn-medium">Learn More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rexp-box">
+                                <span>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </span>
+                                <h6>
+                                    Need a Zipply?
+                                </h6>
+                                <p>
+                                    We make moving big stuff easier.  It’s about the same price as paying your neighbor in beer but without the awkwardness of asking.
+                                </p>
+                                <a href="app.html" class="btn btn-medium">Get The App</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="question-section section-padding bg-black">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInDown animated">
+            <span>
+<!--                Now offering a <b>free</b> delivery analysis-->
+                {% for block in self.section5 %}
+                {% if block.block_type == 'heading1' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </span>
+            <h1>
+<!--                Questions? Talk to a Zipply Expert.-->
+                {% for block in self.section5 %}
+                {% if block.block_type == 'heading2' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            {% for block in self.section5 %}
+            {% if block.block_type == 'cta' %}
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium" data-target="#talktoexpert-modal" data-toggle="modal">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+<!--            <a href="#" class="btn btn-medium" data-target="#talktoexpert-modal" data-toggle="modal">Talk To Expert</a>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

@@ -1,0 +1,437 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Service
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/drive-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'banner_image' %}
+        {% image block.value fill-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            Local Delivery Made Simple-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+            <small class="d-block">
+<!--                SAME DAY DELIVERY OF LARGE ITEMS-->
+                {% for block in self.section1 %}
+                {% if block.block_type == 'banner_subtitle' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </small>
+        </h1>
+    </div>
+
+</section>
+
+<section class="for-delivery-section">
+    <div class="for-delivert-div">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivery-img-box wow fadeInLeftBig animated">
+<!--                        <img src="images/basic-img.jpg" class="img-fluid">-->
+                        {% for block in self.section2 %}
+                        {% if block.block_type == 'image' %}
+                            {% image block.value fill-795x715 class="img-fluid" %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivert-text-box wow fadeInRightBig animated">
+                        <div class="forfel-title mb-5">
+                            <h1>
+<!--                                ...For Delivery-->
+                                {% for block in self.section2 %}
+                                {% if block.block_type == 'heading' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+                            </h1>
+                            <p>
+<!--                                Got a big purchase and need a helping hand?  Zipply gives you that extra little bit of muscle and transportation to get your stuff where it needs to go.-->
+                                {% for block in self.section2 %}
+                                {% if block.block_type == 'text_info' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <ul class="forfel-ul">
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'points' %}
+                            {% for point in block.value %}
+                            <li>
+                            <span>
+                                <i class="fa fa-truck" aria-hidden="true"></i>
+                            </span>
+                                <h6>
+<!--                                    Store Delivery-->
+                                    {{point.title}}
+                                </h6>
+                                <p>
+<!--                                    It happens all the time: you somehow ended up with 4x the amount on your shopping list at-->
+<!--                                    Sam's Club (or Costco). Or maybe that bunk bed you just bought at IKEA for the twins doesn't-->
+<!--                                    actually fit in your trunk. What if Nebraska Furniture Mart's delivery is backed up two-->
+<!--                                    weeks and your party is this weekend? No worries, with Zipply your party is still on... and-->
+<!--                                    the twins are sleeping in their new bunk bed tonight.-->
+                                    {{point.text}}
+                                </p>
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-handshake-o" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Craigslist Pickup</h6>-->
+<!--                                <p>-->
+<!--                                    It's a miracle: you just found the perfect piece of furniture for the perfect price on-->
+<!--                                    Craigslist. But the dreaded "FCFS" is on the listing and you have no way to get it home.-->
+<!--                                    Oh wait, yes you do. #TeamZipply-->
+<!--                                </p>-->
+<!--                            </li>-->
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-bed" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Large Item Delivery</h6>-->
+<!--                                <p>-->
+<!--                                    Now you can use "bulky, oversized item" and "instant, on-demand delivery" in the same-->
+<!--                                    sentence.-->
+<!--                                </p>-->
+<!--                            </li>-->
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="for-delivert-div">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivert-text-box wow fadeInLeftBig animated">
+                        <div class="forfel-title mb-5">
+                            <h1>
+
+<!--                                ...For Moving-->
+                                {% for block in self.section3 %}
+                                {% if block.block_type == 'heading' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+
+                            </h1>
+                            <p>
+
+<!--                                Sometimes you don’t want or need to rent a giant Uhaul.  Sometimes your friends have had enough moving-day pizza.  If you need an extra hand to get your stuff moved, easily and economically, Zipply can help.-->
+                                {% for block in self.section3 %}
+                                {% if block.block_type == 'text_info' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+
+                            </p>
+                        </div>
+                        <ul class="forfel-ul">
+                            {% for block in self.section3 %}
+                            {% if block.block_type == 'points' %}
+                            {% for point in block.value %}
+                            <li>
+                            <span>
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            </span>
+                                <h6>
+<!--                                    Small Apartment/College Moving-->
+                                    {{point.title}}
+                                </h6>
+                                <p>
+<!--                                    We'll gladly help you transport your big stuff that doesn't fit in your car. Fortunately for you, dressers, beds, futons, and 86'' flat screen TVs don't stand a chance against us.-->
+                                    {{point.text}}
+                                </p>
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-heart" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Garage/Moving Sale Help</h6>-->
+<!--                                <p>-->
+<!--                                    Need help delivering a 10ft inflatable gorilla to a covert location in the next hour? Abso-freakin'-lutely, my friend.-->
+<!--                                </p>-->
+<!--                            </li>-->
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-trash-o" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Appliance Transportation</h6>-->
+<!--                                <p>-->
+<!--                                    Our drivers are strong, but they aren't Superman. If you can provide extra loading help (or a dolly!) then you're right in our wheelhouse.-->
+<!--                                </p>-->
+<!--                            </li>-->
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivery-img-box wow fadeInRightBig animated">
+<!--                        <img src="images/for-moving.jpg" class="img-fluid">-->
+                        {% for block in self.section3 %}
+                        {% if block.block_type == 'image' %}
+                            {% image block.value fill-795x715 class="img-fluid" %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="for-delivert-div">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivery-img-box wow fadeInLeftBig animated">
+<!--                        <img src="images/everything-else-img.jpg" class="img-fluid">-->
+                        {% for block in self.section4 %}
+                        {% if block.block_type == 'image' %}
+                            {% image block.value fill-795x715 class="img-fluid" %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 p-md-0">
+                    <div class="fordelivert-text-box wow fadeInRightBig animated">
+                        <div class="forfel-title mb-5">
+                            <h1>
+
+<!--                                ...For Everything else-->
+                                {% for block in self.section4 %}
+                                {% if block.block_type == 'heading' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+
+                            </h1>
+                            <p>
+
+<!--                                Sometimes you have more than one piece to move, and we can help there too.  Whether its buying stuff, moving stuff, removing stuff, Zipply has got you covered.-->
+                                {% for block in self.section4 %}
+                                {% if block.block_type == 'text_info' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+
+                            </p>
+                        </div>
+                        <ul class="forfel-ul">
+                            {% for block in self.section4 %}
+                            {% if block.block_type == 'points' %}
+                            {% for point in block.value %}
+                            <li>
+                            <span>
+                                <i class="fa fa-archive" aria-hidden="true"></i>
+                            </span>
+                                <h6>
+<!--                                    Storage Unit Hauling-->
+                                    {{point.title}}
+                                </h6>
+                                <p>
+<!--                                    Need help moving those last few oversized items to (or from) your storage unit? That's our speciality and yes, we're confident your massive sofa will fit in our trucks.-->
+                                    {{point.text}}
+                                </p>
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-bed" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Estate Sale Hauling</h6>-->
+<!--                                <p>-->
+<!--                                    Big stuff + small cars + estate sales = problems. Yes, your husband may find a way to hog-tie that credenza to your Corolla's roof, but if he's not an Eagle Scout, we probably wouldn't recommend it.-->
+<!--                                </p>-->
+<!--                            </li>-->
+
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-trash-o" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Junk Removal Services</h6>-->
+<!--                                <p>-->
+<!--                                    We get it: junk piles up in your garage and your son just told you that your all-in-one-TV-console/stereo/bookcase is a liiiitle outdated. No big deal, you're a few taps away from making it all instantly disappear.-->
+<!--                                </p>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                            <span>-->
+<!--                                <i class="fa fa-heart" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                                <h6>Donation Drop Off</h6>-->
+<!--                                <p>-->
+<!--                                    Filling the Salvation Army, Good Will or local homeless shelter just got easier. Who knew how good it feels to give?-->
+<!--                                </p>-->
+<!--                            </li>-->
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="whyzipply-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                The Zipply Benefit-->
+                {% for block in self.section5 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section5 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        Use Zipply-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        Get a Zipply Driver right now, or schedule a future pickup – anywhere in your city.-->
+                        {{card.text}}
+                    </p>
+                    <a href="{{card.cta.button_page.url}}" class="btn red-btn">{{card.cta.button_text}}</a>
+<!--                    <a href="#" class="btn red-btn">Download App</a>-->
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-handshake-o" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Partner with Zipply-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Zipply’s same-day delivery services can fulfill all of your retail and commercial delivery needs.-->
+<!--                    </p>-->
+<!--                    <a href="#" class="btn red-btn">Learn More</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-truck" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Drive with Zipply-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Interested in working when you want, and earning up to $40/hr driving for Zipply? Start here.-->
+<!--                    </p>-->
+<!--                    <a href="#" class="btn red-btn">Get Started</a>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="testi-comment-section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="testimonial-slider-div">
+                    <div class="testimonial-slider2 owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="testimonial-box text-center wow fadeInUp animated">
+                                <h3 class="text-muted font-italic">
+<!--                                    "Fantastic! It’s like Uber but for pickup trucks to help move stuff across town. Bye-bye renting UHaul pickups."-->
+                                    {% for block in self.section6 %}
+                                    {% if block.block_type == 'review' %}
+                                        {{block.value}}
+                                    {% endif %}
+                                    {% endfor %}
+                                </h3>
+                                <div class="testuser justify-content-center wow fadeInUp animated">
+                                    <div class="testm-img">
+<!--                                        <img src="images/t-img1.jpg" class="img-fluid">-->
+                                        {% for block in self.section6 %}
+                                        {% if block.block_type == 'image' %}
+                                            {% image block.value fill-65x65 class="img-fluid" %}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="testname">
+                                        <p>
+<!--                                            Ciara H.-->
+                                            {% for block in self.section6 %}
+                                            {% if block.block_type == 'name' %}
+                                                {{block.value}}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="download-app-section section-padding">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInUp animated">
+            {% for block in self.section7 %}
+            {% if block.block_type == 'cta' %}
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+<!--            <a href="app.html" class="btn btn-medium">Download APp</a>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,249 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/about-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'banner_image' %}
+        {% image block.value fill-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            About Zipply-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="whyzipply-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                OUR VALUES-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row justify-content-center">
+            {% for block in self.section2 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-sm-6 col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        WE'RE CURIOUS-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        We ask why. We figure out the reason it didn’t work. We explore solutions. We never stop learning.-->
+                        {{card.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-sm-6 col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE PERSEVERE-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We push through brick walls. We believe in the power of grit. We are tenacious about solving problems.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-users" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE COMMUNICATE-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We ask for help. We listen with curiosity. We discuss ideas, roadblocks and solutions. We kindly argue.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-md-6">-->
+<!--                <div class="whyzipply-box wow fadeInLeft animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-archive" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE'RE CUSTOMER OBSESSED-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We work tirelessly for our customers. We solve their problems and earn their trust. We delight them.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-md-6">-->
+<!--                <div class="whyzipply-box wow fadeInRight animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE DO THE RIGHT THING-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We start from humility. We act with bold integrity. We drive to make a positive impact around us.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="our-mission-section section-padding">
+    <div class="container">
+        <div class="section-title text-center wow fadeInDown animated">
+            <h1>
+<!--                Our Mission-->
+                {% for block in self.section3 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            <h4 class="h4 text-muted font-weight-normal">
+<!--                Our mission is to bring the world closer together by providing the most rapid and reliable way to deliver large items in every city.-->
+                {% for block in self.section3 %}
+                {% if block.block_type == 'info_line' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h4>
+        </div>
+    </div>
+</section>
+
+<div class="founder-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title mb-5 text-center wow fadeInDown animated">
+            <h1>
+<!--                The Founders-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row justify-content-center">
+            {% for block in self.section4 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-sm-6 col-md-3">
+                <div class="founder-div text-center wow fadeInLeft animated">
+                    <div class="founder-img-box">
+<!--                        <img src="images/t-img1.jpg" class="img-fluid">-->
+                        {% image card.image fill-260x260 class="img-fluid" %}
+                    </div>
+                    <div class="founder-name">
+                        <h6>
+<!--                            John Doe-->
+                            {{card.name}}
+                        </h6>
+                        <span>
+<!--                            Co-Founder & CEO-->
+                            {{card.designation}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-sm-6 col-md-3">-->
+<!--                <div class="founder-div text-center wow fadeInRight animated">-->
+<!--                    <div class="founder-img-box">-->
+<!--                        <img src="images/t-img1.jpg" class="img-fluid">-->
+<!--                    </div>-->
+<!--                    <div class="founder-name">-->
+<!--                        <h6>-->
+<!--                            John Doe-->
+<!--                        </h6>-->
+<!--                        <span>-->
+<!--                            Co-Founder & CEO-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="our-fisrt-section section-padding">
+    <div class="container">
+        <div class="section-title text-center wow fadeInDown animated">
+            <h1>
+<!--                Our First Pickup-->
+                {% for block in self.section5 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+<!--            <p class="mb-3">-->
+<!--                On a hot Manhattan afternoon in 2015, Ben had four different friends ask if they could borrow his pickup-->
+<!--                to help haul stuff around town. Multiple truck loads later, being more worn out than his ’99 Ford-->
+<!--                Ranger, he laid in bed thinking, “there has to be a better way.”-->
+<!--            </p>-->
+<!--            <p class="mb-3">-->
+<!--                The next day in class at K-State, Ben whispered his dilemma to Harrison Proffitt who nonchalantly-->
+<!--                replied, “Let’s start a business.” They walked out of that class with a simple concept in mind: tap a-->
+<!--                button, get a truck.-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                Zipply has come a long way since then and we look forward to being there for your next, <a href="#">“I need a truck”</a>-->
+<!--                moment.-->
+<!--            </p>-->
+            <p>
+                {% for block in self.section5 %}
+                {% if block.block_type == 'text_info' %}
+                    {{block.value|richtext}}
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
+<section class="download-app-section section-padding">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInDown animated">
+            {% for block in self.section6 %}
+            {% if block.block_type == 'cta' %}
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+<!--            <a href="app.html" class="btn btn-medium">Download APp</a>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}

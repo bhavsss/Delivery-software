@@ -1,0 +1,91 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Safe Helpful
+{% endblock %}
+
+{% block body %}
+
+<section class="for-delivery-section">
+    <div class="for-delivert-div">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12 col-md-6 p-0">
+                    <div class="fordelivery-img-box wow fadeInLeftBig animated">
+<!--                        <img src="images/basic-img.jpg" class="img-fluid">-->
+                        {% for block in self.section1 %}
+                        {% if block.block_type == 'image' %}
+                            {% image block.value fill-795x950 class="img-fluid" %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="fordelivert-text-box wow fadeInRightBig animated">
+                        <div class="forfel-title mb-5">
+                            <div class="lg-div mb-5">
+<!--                                <img src="images/Logo@2x.png" class="img-fluid">-->
+                                {% for block in self.section1 %}
+                                {% if block.block_type == 'heading_image' %}
+                                    {% image block.value fill-425x135 class="img-fluid" %}
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <p>
+<!--                                At Zipply, we’re changing the way people view service and how they interact with-->
+<!--                                businesses. Sure, a lot of companies say that but most don’t tell you how. Well, we-->
+<!--                                thought we’d let you in on some of our secrets. Here are just a few steps in our-->
+<!--                                18-point driver safety standard that ensures your Zipply experience is excellent:-->
+                                {% for block in self.section1 %}
+                                {% if block.block_type == 'text_info' %}
+                                    {{block.value}}
+                                {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <ol class="ol-helpfull">
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'points' %}
+                            {% for point in block.value %}
+                            <li>
+<!--                                <b>Initial Application:</b> This establishes initial driver requirements, like being able to lift 100 pounds and having the tools, equipment and truck to get the job done.-->
+                                <b>{{point.title}}</b> {{point.text}}
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+<!--                            <li>-->
+<!--                                <b>Background check:</b> We do multiple background and motor vehicle checks to ensure our drivers are good people who can be trusted.-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <b>20-point vehicle inspection:</b> We have specific stipulations in place as to what type of trucks we deem as, “Zipply ready.”-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <b>Driver education & professionalism training:</b> We optimize this process to answer a single question, “Would we be okay with this person helping our mom transport her couch?”-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <b>Driver performance tracking:</b> Our platform uses AI to capture data, recognize patterns, monitor safety and coach our drivers based upon their behaviors. We track hundreds of metrics, including punctuality, phone use, acceleration, speed and braking.-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <b>Driver rating system: </b> We have automated processes that analyze multiple customer satisfaction metrics from every delivery and immediately notifies our customer service team of abnormalities. This ensures all Zipply drivers live up to our stringent standards so you get a consistent, top-notch service.-->
+<!--                            </li>-->
+                        </ol>
+                        {% for block in self.section1 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="index.html" class="btn btn-medium">Home</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

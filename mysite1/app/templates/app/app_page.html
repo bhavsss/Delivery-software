@@ -1,0 +1,77 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+App
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/app-banner.jpg" class="img-fluid">-->
+    {% for block in self.section1 %}
+    {% if block.block_type == 'banner_image' %}
+        {% image block.value fill-1585x555 class="img-fluid" %}
+    {% endif %}
+    {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            Application-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="app-section section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="app-img-box wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;">
+<!--                    <img src="images/mobile.png" alt="img">-->
+                    {% for block in self.section2 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-415x510 %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="app-content-box wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="app-content">
+                        <h1 class="mb-5">
+<!--                            Enter your number and we'll<br>-->
+<!--                            send the app straight to you.-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'heading' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <div class="mobile-nunber-input">
+                            <img src="{% static 'images/Icon awesome-mobile-alt.svg' %}" alt="icon">
+                            <input class="form-control" placeholder="Enter your phone number to Get APP">
+                            <button class="btn ente-btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+
+                        {% for block in self.section2 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn text-uppercase red-btn">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="#" class="btn text-uppercase red-btn">Get the App</a>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

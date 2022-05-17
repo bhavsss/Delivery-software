@@ -1,0 +1,30 @@
+Superuser
+Username : admin
+Password : admin
+
+---------------------------------------------------
+
+Pages in Zipply
+
+--> About Us
+--> App
+--> Blog
+--> Blog Detail
+--> Business
+--> Business Demo
+--> Business Services
+--> Careers
+--> Cities
+--> Contact Us
+--> Drive
+--> FAQ Business
+--> FAQ
+--> Index
+--> Safe Helpful
+--> Search result
+--> Service
+--> Where to next
+
+
+--> For individuals
+

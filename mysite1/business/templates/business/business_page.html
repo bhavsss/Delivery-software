@@ -1,0 +1,573 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Business
+{% endblock %}
+
+{% block body %}
+
+<section class="business-banner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="s-banner-text wow fadeInLeftBig animated">
+                    <h1>
+<!--                        Zipply + BUSINESS-->
+                        {% for block in self.section1 %}
+                        {% if block.block_type == 'title' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </h1>
+                    <p>
+<!--                        Deliver in hours, not days. Our commitment to service combines with speed, reliability and an ability to flex during peak seasons.-->
+                        {% for block in self.section1 %}
+                        {% if block.block_type == 'subtitle' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </p>
+                    <div class="ourteam-list mt-3">
+                        <h6>
+<!--                            Handling all of your business delivery needs:-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'list_title' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h6>
+                        <ul>
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'list_points' %}
+                                {% for point in block.value %}
+                                    <li>{{point}}</li>
+                                {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+<!--                            <li>On-demand home delivery (from warehouse or store)</li>-->
+<!--                            <li>Expedited and hot shot business delivery</li>-->
+<!--                            <li>Curbside pickup with threshold delivery (no personal contact)</li>-->
+<!--                            <li>Same-day, commercial delivery</li>-->
+<!--                            <li>Buy online &amp; either pickup in store (BOPIS) or deliver from store or warehouse.</li>-->
+<!--                            <li>Reverse logistics</li>-->
+                        </ul>
+                        <p>
+
+<!--                            Contact us today to get a free business delivery analysis.-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'bottom_line' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="free-delivert-form wow fadeInRightBig animated">
+                    <h6>
+                        Free Delivery Analysis for Your Business
+                    </h6>
+                    <div class="dform-div">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="First and Last Name">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Business Website">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Email Address">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option selected>Average Number of Deliveries Weekly</option>
+                                        <option>250+</option>
+                                        <option>50-250</option>
+                                        <option>Less than 50</option>
+                                    </select>
+                                </div>
+                                <a href="#" class="btn btn-medium d-block">Get Free Analysis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="whyzipply-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInUp animated">
+            <h1>
+
+<!--                The Zipply Benefit-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+
+            </h1>
+        </div>
+        <div class="row">
+
+            {% for block in self.section2 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInDown animated">
+                    <span>
+                        <i class="fa fa-line-chart" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        Increase Sales-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+
+
+<!--                        On average, we arrive on site 22 minutes after an order is placed. Our offering is proven to increase sales and drive repeat business.-->
+                        {{card.text}}
+
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInDown animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-clock-o" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Real-time Tracking & ETAs-->
+<!--                    </h6>-->
+<!--                    <p>-->
+
+
+<!--                        We utilize the latest technologies to provide end customers with industry-leading transparency and real-time updates.-->
+
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInDown animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-calendar" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        7 Day Support-->
+<!--                    </h6>-->
+<!--                    <p>-->
+
+
+<!--                        Our customer success team is available every day of the week to ensure the highest quality of service for you and your customers.-->
+
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="our-driver-section section-padding bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="our-driver-div wow fadeInLeftBig animated">
+                    <div class="section-title">
+                        <h1>
+<!--                            Our Drivers-->
+                            {% for block in self.section3 %}
+                            {% if block.block_type == 'title' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <p>
+<!--                            Every Zipply driver has passed a <a href="safe-helpful.html">18-point safety standard</a>  to ensure a consistent, top-notch-->
+<!--                            service. Our drivers boast of a 99% 5-star customer rating overall and deliver from over-->
+<!--                            5,000 retailers and businesses.-->
+                            {% for block in self.section3 %}
+                            {% if block.block_type == 'text' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="driverframe-div wow fadeInRightBig animated">
+                    {% for block in self.section3 %}
+                    {% if block.block_type == 'video' %}
+                    <iframe width="560" height="315" src="{{block.value}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% endif %}
+                    {% endfor %}
+<!--                    <iframe width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="comprehensive-delivery-section section-padding">
+
+    <div class="container">
+        <div class="section-title mb-5 text-center wow fadeInDown animated">
+            <h1>
+<!--                Beyond Delivery-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            <p>
+<!--                We do a lot more than just ship products from your stores.-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'subtitle' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+        <div class="row">
+
+            {% for block in self.section4 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-6">
+                <div class="com-del-box wow fadeInUp animated">
+                    <h6>
+<!--                        PLATFORM MANAGEMENT-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        Delivery is managed from a simple online platform that features flexible pricing options, efficient delivery scheduling and real-time tracking.-->
+                        {{card.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+<!--            <div class="col-md-6">-->
+<!--                <div class="com-del-box wow fadeInUp animated">-->
+<!--                    <h6>-->
+<!--                        ORDER FULFILLMENT-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Whether it is a store-to-customer delivery or business-to-business hot shot, Zipply handles everything including full-transaction processing, assembly and the logistics.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="com-del-box wow fadeInUp animated">-->
+<!--                    <h6>-->
+<!--                        ANALYTICS AND MARKETING-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Zipply offers a full custom analytics dashboard, and includes additional support like monthly business reviews, digital and marketing collateral, and PR opportunities.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="com-del-box wow fadeInUp animated">-->
+<!--                    <h6>-->
+<!--                        SERVICE AND SUPPORT-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        As a Zipply partner, you get the benefit of our centralized customer care system, with dedicated account management and a dedicated resolution funnel for just your business.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="delivery-solution-section section-padding bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                <div class="solution-img wow fadeInLeftBig animated">
+<!--                    <img src="{% static 'images/mobile.png' %}" class="img-fluid">-->
+                    {% for block in self.section5 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-530x634 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="solution-content wow fadeInRightBig animated">
+                    <div class="section-title white-title">
+                        <span>
+<!--                            FOR RETAIL DELIVERIES-->
+                            {% for block in self.section5 %}
+                            {% if block.block_type == 'title1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </span>
+                        <h1>
+<!--                            One Platform to move it all-->
+                            {% for block in self.section5 %}
+                            {% if block.block_type == 'title2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                    </div>
+                    <p>
+<!--                        Zipply can supercharge your retail operation by offering on-demand delivery, integrated-->
+<!--                        seamlessly into your sales process. We lead the industry in advanced logistic algorithms, so we-->
+<!--                        can plug in to your existing operations, and get you running with Zipply in as little as two-->
+<!--                        weeks!-->
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'text' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </p>
+                    <div class="medium-btn-div">
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="business-demo.html" class="btn btn-medium">Get a Free Demo</a>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="final-mine-section section-padding bg-light pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="final-mile-content wow fadeInDown animated">
+                    <div class="section-title">
+                        <span>
+<!--                            FOR SUPPLY CHAIN MANAGEMENT-->
+                            {% for block in self.section6 %}
+                            {% if block.block_type == 'title1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </span>
+                        <h1>
+<!--                            Advanced Analytics capabilities-->
+                            {% for block in self.section6 %}
+                            {% if block.block_type == 'title2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <p>
+<!--                            Zipply’s analytics platform gives you full visibility into trending and historical performance, customer metrics, delivery metrics, and anything else your operations or store teams may need to know.-->
+                            {% for block in self.section6 %}
+                            {% if block.block_type == 'text' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="medium-btn-div">
+                        {% for block in self.section6 %}
+                        {% if block.block_type == 'cta' %}
+<!--                        <a href="#" class="btn btn-medium">Learn More</a>-->
+                        <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="final-mine-img wow fadeInDown animated">
+<!--                    <img src="{% static 'images/zipplydisplay.png' %}" class="img-fluid">-->
+                    {% for block in self.section6 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-530x350 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testi-comment-section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="testimonial-slider-div wow fadeInUp animated">
+                    <div class="testimonial-slider2 owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="testimonial-box text-center">
+                                {% for block in self.section7 %}
+                                {% if block.block_type == 'reviews' %}
+                                {% for r in block.value %}
+                                <h3 class="text-muted font-italic">
+<!--                                    "Zipply is fabulous to work with and has solved a major pain point. Our customers love having a same-hour delivery option!"-->
+                                    {{r.review}}
+                                </h3>
+                                <div class="testuser justify-content-center">
+                                    <div class="testm-img">
+<!--                                        <img src="{% static 'images/t-img1.jpg' %}" class="img-fluid">-->
+                                        {% image r.image fill-60x60 class="img-fluid" %}
+                                    </div>
+                                    <div class="testname">
+<!--                                        <p>Ray Smith</p>-->
+                                        <p>{{r.person_name}}</p>
+<!--                                        <span>Home Goods</span>-->
+                                        <span>{{r.person_designation}}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wedeliver-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title mb-5 wow fadeInDown animated">
+            <h1>
+<!--                We Deliver From-->
+                {% for block in self.section8 %}
+                {% if block.block_type == 'title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="wedelivery-slider-div">
+            <div class="deliveryfrom-slider owl-carousel owl-theme">
+
+                {% for block in self.section8 %}
+                {% if block.block_type == 'cards' %}
+                {% for card in block.value %}
+                <div class="item">
+<!--                    <img src="{% static 'images/Logo.png' %}" class="img-fluid">-->
+                    {% image card fill-170x54 class="img-fluid" %}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="local-delivery-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Local Delivery Networks-->
+                {% for block in self.section9 %}
+                {% if block.block_type == 'title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="local-map-box text-center wow fadeInDown animated">
+            <img src="{% static 'images/map.png' %}" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<section class="feeling-zipply-section section-padding text-center bg-light">
+    <div class="container">
+        <div class="section-title wow fadeInDown animated">
+            <h1>
+
+<!--                Link up with Zipply-->
+                {% for block in self.section10 %}
+                {% if block.block_type == 'title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+
+            </h1>
+            <h3>
+
+<!--                Subscribe to the Zipply Business Newletter. We will never share your information with anyone.-->
+                {% for block in self.section10 %}
+                {% if block.block_type == 'subtitle' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+
+            </h3>
+        </div>
+        <div class="feeling-email-box wow fadeInDown animated">
+            <div class="form-group">
+                <input class="form-control" placeholder="Enter your email address">
+            </div>
+            <a href="#" class="btn btn-medium">Sign Up</a>
+        </div>
+    </div>
+</section>
+
+<section class="want-zipply-city section-padding">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInUp animated">
+            <h1>
+<!--                Talk to a delivery expert-->
+                {% for block in self.section11 %}
+                {% if block.block_type == 'banner_title' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+
+            {% for block in self.section11 %}
+            {% if block.block_type == 'cta' %}
+<!--            <a href="#" class="btn btn-medium">Get Started</a>-->
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

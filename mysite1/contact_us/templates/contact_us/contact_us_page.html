@@ -1,0 +1,101 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/contact-us-banner.jpg" class="img-fluid">-->
+        {% for block in self.section1 %}
+        {% if block.block_type == 'banner_image' %}
+            {% image block.value fill-1585x555 class="img-fluid" %}
+        {% endif %}
+        {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            Contact Us-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="whyzipply-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+
+<!--                Need assistance? We're here to help!-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section2 %}
+            {% if block.block_type == 'contact_points' %}
+            {% for point in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        Contact-->
+                        {{point.title}}
+                    </h6>
+                    <p>
+<!--                        (123)-123-1234-->
+                        {{point.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-envelope" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Support Email-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        support@Zipply.com-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-map-marker" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Address-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        2 San Juan Court-->
+<!--                        Shrewsbury, MA 01545-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

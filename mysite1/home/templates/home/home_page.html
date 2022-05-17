@@ -1,0 +1,1126 @@
+{% extends "zipply_base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+
+<section class="banner-section">
+    <div class="container-fluid">
+        <div class="row align-items-end">
+            <div class="col-md-6 col-lg-6 col-xl-6">
+                <div class="banner-content wow fadeInLeftBig">
+
+                    <div class="banner-title color-red">
+                        <h1>
+<!--                            Shipping Solutions For All-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'heading1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <h2 class="font-weight-normal">
+<!--                            Pickup and Delivery Anywhere-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'heading2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h2>
+                        <p>
+<!--                            Food,Drinks,groceries,and more available for delivery and pickup.-->
+                            {% for block in self.section1 %}
+                            {% if block.block_type == 'info_line' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="banner-tab-box">
+                        <div class="tab-box-h">
+                            <ul>
+                                <li class="active">
+                                    <a href="#">
+                                       <img src="{% static 'images/Icon-awesome-gift.svg' %}" alt="courier"> Courier
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="{% static 'images/Icon-map-food.svg' %}" alt="Markets"> Markets
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="{% static 'images/Icon-map-clothing-store.svg' %}" alt="Anything"> Anything
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="enteraddressbox">
+                            <img src="{% static 'images/Icon metro-location.svg' %}" alt="icon">
+                            <input class="form-control" placeholder="Enter Your Address">
+                            <button class="btn ente-btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="del-pic-tab">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Delivery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pickup</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="delivery-content-box">
+                                        <a href="#"><img src="{% static 'images/Icon awesome-location-arrow.svg' %}" alt="icon"> Use Current Location</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="delivery-content-box">
+                                        <a href="#">Pickup Tab</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xs-6">
+                <div class="banner-photo text-center wow fadeInRightBig">
+<!--                    <img src="images/banner.png" alt="banner" class="img-fluid">-->
+                    {% for block in self.section1 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-685x670 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="save-big-section">
+    <div class="container-fluid p-0">
+        <div class="col-md-12">
+            <div class="row align-items-center">
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="save-content wow fadeInDown">
+                        <h1>
+<!--                            Save Big on Every Order.-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'heading1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <h5 class="font-weight-normal">
+<!--                            Join Unlimited-->
+                            {% for block in self.section2 %}
+                            {% if block.block_type == 'heading2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h5>
+<!--                        <p>Unlimited free deliveries. Reduced fees on eligible orders.</p>-->
+<!--                        <p>Exclusive deals. Try ZIPPLY Unlimited now for free. cancel anytime.</p>-->
+                        {% for block in self.section2 %}
+                        {% if block.block_type == 'info_line' %}
+                        <p>{{block.value|richtext}}</p>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% for block in self.section2 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn text-uppercase red-btn">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="#" class="btn text-uppercase red-btn">Try Unlimited Free</a>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="business-section section-padding">
+    <div class="container">
+        <div class="row">
+            {% for block in self.section3 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-6">
+                <div class="bussiness-box wow fadeInDown animated">
+                    <div class="buss-img-box">
+<!--                        <img class="img-fluid" src="images/bussness-img.jpg" alt="img">-->
+                        {% image card.image fill-540x290 class="img-fluid" %}
+                    </div>
+                    <div class="buss-content">
+                        <span>Zipply For</span>
+                        <h6>
+<!--                            Business-->
+                            {{card.title}}
+                        </h6>
+                        <p>
+<!--                            Deliver in hours, not days. Our commitment to service combines speed, reliability, and an ability to flex during peak seasons.-->
+                            {{card.text}}
+                        </p>
+                        <a href="{{card.cta.button_page.url}}" class="default-btn">{{card.cta.button_text}}</a>
+<!--                        <a href="#premium-solution" class="default-btn">Learn More</a>-->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-6">-->
+<!--                <div class="bussiness-box wow fadeInDown animated">-->
+<!--                    <div class="buss-img-box">-->
+<!--                        <img class="img-fluid" src="images/individuals-img.jpg" alt="img">-->
+<!--                    </div>-->
+<!--                    <div class="buss-content">-->
+<!--                        <span>Zipply For</span>-->
+<!--                        <h6>Individuals</h6>-->
+<!--                        <p>-->
+<!--                            We make moving stuff easier.  About the same price as paying your neighbor in beer, without the awkwardness of asking.-->
+<!--                        </p>-->
+<!--                        <a href="for-individuals.html" class="default-btn">Learn More</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section id="premium-solution" class="delivery-solution-section section-padding bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="solution-content wow fadeInLeft animated">
+                    <div class="section-title">
+                        <span>
+<!--                            What's Zipply?-->
+                            {% for block in self.section4 %}
+                            {% if block.block_type == 'heading1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </span>
+                        <h1>
+<!--                            A Premium Delivery Solution-->
+                            {% for block in self.section4 %}
+                            {% if block.block_type == 'heading2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                    </div>
+<!--                    <p>Thousands of companies of all sizes use Zipply for same-day, last mile big & bulky delivery.</p>-->
+<!--                    <p>-->
+<!--                        Our tech-enabled platform integrates seamlessly into your existing processes, providing a best-in-class customer experience. Advanced algorithms and unparalleled commitment to driver excellence delivers a true on-demand experience that leads the industry.-->
+<!--                    </p>-->
+                    {% for block in self.section4 %}
+                    {% if block.block_type == 'text_info' %}
+                        {{block.value|richtext}}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="medium-btn-div">
+                        {% for block in self.section4 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn btn-medium">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="#" class="btn btn-medium">Zipply For Business</a>-->
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="solution-img wow fadeInRight animated">
+<!--                    <img src="images/mobile.png" class="img-fluid">-->
+                    {% for block in self.section4 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-545x650 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-zipply-section section-padding red-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title white-title mb-5 wow fadeInDown animated">
+                    <span>
+<!--                        What's Zipply?-->
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'heading1' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </span>
+                    <h1>
+<!--                        A Premium Delivery Solution-->
+                        {% for block in self.section5 %}
+                        {% if block.block_type == 'heading2' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </h1>
+                </div>
+            </div>
+            {% for block in self.section5 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="deliveryway-box wow fadeInLeftBig animated">
+                    <span>
+<!--                        <i class="fa fa-map-marker" aria-hidden="true"></i>-->
+                        <i class="fa {{card.logo}}" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        Deliver Your Way-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        Our offerings are flexible so you can customize them to the needs of your business.-->
+                        {{card.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="deliveryway-box wow fadeInDownBig animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Delight Customers-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We obsess over customers experience, delivering an industry-leading 87 Net Promoter Score.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="deliveryway-box wow fadeInRightBig animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-line-chart" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        Increase Sales-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Our local, same-day, big and bulky offering is proven to increase sales and drive repeat business.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="howitwork-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h1>
+<!--                How It Works-->
+                {% for block in self.section6 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+
+        {% for block in self.section6 %}
+        {% if block.block_type == 'cards' %}
+        {% for card in block.value %}
+
+            {% if forloop.counter|divisibleby:2 %}
+
+            <div class="how-step-div wow fadeInUp animated">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="work-img">
+<!--                            <img src="images/howwork-img2.jpg" class="img-fluid">-->
+                            {% image card.image fill-545x365 class="img-fluid" %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="worktext-box">
+                            <span>
+<!--                                2-->
+                                {{card.number}}
+                            </span>
+                            <h6>
+<!--                                Align On Services-->
+                                {{card.title}}
+                            </h6>
+                            <p>
+<!--                                We facilitate many different types of delivery, specializing in big & bulky, last mile,-->
+<!--                                same-day services. Our core capabilities include home delivery, reverse logistics and local-->
+<!--                                carrier services.-->
+                                {{card.text}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {% else %}
+
+            <div class="how-step-div wow fadeInUp animated">
+                <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="worktext-box">
+                        <span>
+<!--                            1-->
+                            {{card.number}}
+                        </span>
+                        <h6>
+<!--                            Choose Your Product-->
+                            {{card.title}}
+                        </h6>
+                        <p>
+<!--                            Our nimble platform seamlessly integrates into your existing processes. Whether it’s API/POS integration, web-based portals for your associates or in-store kiosks for your customers, our intelligent platform provides custom solutions based on your needs.-->
+                            {{card.text}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="work-img">
+<!--                        <img src="images/howwork-img1.jpg" class="img-fluid">-->
+                        {% image card.image fill-545x365 class="img-fluid" %}
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            {% endif %}
+
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+<!--        <div class="how-step-div wow fadeInUp animated">-->
+<!--            <div class="row align-items-center">-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="worktext-box">-->
+<!--                    <span>1</span>-->
+<!--                    <h6>-->
+<!--                        Choose Your Product-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        Our nimble platform seamlessly integrates into your existing processes. Whether it’s API/POS integration, web-based portals for your associates or in-store kiosks for your customers, our intelligent platform provides custom solutions based on your needs.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="work-img">-->
+<!--                    <img src="images/howwork-img1.jpg" class="img-fluid">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--        <div class="how-step-div wow fadeInUp animated">-->
+<!--            <div class="row align-items-center">-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="work-img">-->
+<!--                        <img src="images/howwork-img2.jpg" class="img-fluid">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="worktext-box">-->
+<!--                        <span>2</span>-->
+<!--                        <h6>-->
+<!--                            Align On Services-->
+<!--                        </h6>-->
+<!--                        <p>-->
+<!--                            We facilitate many different types of delivery, specializing in big & bulky, last mile,-->
+<!--                            same-day services. Our core capabilities include home delivery, reverse logistics and local-->
+<!--                            carrier services.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="how-step-div wow fadeInUp animated">-->
+<!--            <div class="row align-items-center">-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="worktext-box">-->
+<!--                        <span>3</span>-->
+<!--                        <h6>-->
+<!--                            We Deliver-->
+<!--                        </h6>-->
+<!--                        <p>-->
+<!--                            With a best in class average response time of 22 minutes, your customers will rave about-->
+<!--                            their delivery experience. 99% of our customers say that they’d recommend Zipply a friend.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="work-img">-->
+<!--                        <img src="images/howwork-img3.jpg" class="img-fluid">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+</section>
+
+<section class="our-seccess-section section-padding bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title white-title text-center mb-5 wow fadeInDown animated">
+                    <span>
+<!--                        Our Success-->
+                        {% for block in self.section7 %}
+                        {% if block.block_type == 'heading1' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </span>
+                    <h1>
+<!--                        By The Numbers-->
+                        {% for block in self.section7 %}
+                        {% if block.block_type == 'heading2' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </h1>
+                </div>
+            </div>
+
+            {% for block in self.section7 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="successbox wow fadeInUp animated">
+                    <p>
+<!--                        AVG DRIVER ARRIVAL-->
+                        {{card.title}}
+                    </p>
+                    <h1>
+<!--                        22 MINS-->
+                        {{card.text}}
+                    </h1>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+<!--            <div class="col-md-4">-->
+<!--                <div class="successbox wow fadeInUp animated">-->
+<!--                    <p>-->
+<!--                        INDUSTRY-LEADING CSAT-->
+<!--                    </p>-->
+<!--                    <h1>-->
+<!--                        87 NPS-->
+<!--                    </h1>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="successbox wow fadeInUp animated">-->
+<!--                    <p>-->
+<!--                        DRIVER APPLICANT ACCEPTANCE-->
+<!--                    </p>-->
+<!--                    <h1>-->
+<!--                        15%-->
+<!--                    </h1>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="our-driver-section section-padding bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="our-driver-div wow fadeInLeftBig animated">
+                    <div class="section-title">
+                        <h1>
+<!--                            Our Drivers-->
+                            {% for block in self.section8 %}
+                            {% if block.block_type == 'heading' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <p>
+<!--                            Every Zipply driver has passed a <a href="safe-helpful.html">18-point safety standard</a>  to ensure a consistent, top-notch-->
+<!--                            service. Our drivers boast of a 99% 5-star customer rating overall and deliver from over-->
+<!--                            5,000 retailers and businesses.-->
+                            {% for block in self.section8 %}
+                            {% if block.block_type == 'text_info' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="driverframe-div wow fadeInRightBig animated">
+                    {% for block in self.section8 %}
+                    {% if block.block_type == 'ext_url' %}
+                    <iframe width="560" height="315" src="{{block.value}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% endif %}
+                    {% endfor %}
+<!--                    <iframe width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="modal fade bd-example-modal-lg" id="GetStarted-Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Get Started Today
+                    </h5>
+                    <p class="text-muted">
+                        Join the 5,000+ businesses using Zipply’s platform.
+                    </p>
+                </div>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label">
+                                    First & Last Name
+                                </label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label">
+                                    Company Website
+                                </label>
+                                <input type="text" class="form-control" placeholder="example : 'zipply.com'">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label">
+                                    Email
+                                </label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-form-label">
+                                    Phone
+                                </label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="col-form-label">
+                                    Avg. Number of Deliveries Weekly
+                                </label>
+                                <select class="form-control">
+                                    <option>250+</option>
+                                    <option>50-250</option>
+                                    <option>Less Than 50</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">
+                                    Delivery Needs
+                                </label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-medium">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="join-business-section section-padding bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="joinbus-img">
+<!--                    <img src="images/join-img.png" class="img-fluid">-->
+                    {% for block in self.section9 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-240x465 class="img-fluid" %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="section-title white-title wow fadeInUp animated">
+                    <h1>
+<!--                        Join the 5,000+ Businesses using Zipply's platform.-->
+                        {% for block in self.section9 %}
+                        {% if block.block_type == 'text' %}
+                            {{block.value}}
+                        {% endif %}
+                        {% endfor %}
+                    </h1>
+                    <div class="medium-btn-div">
+                        {% for block in self.section9 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn btn-medium" data-toggle="modal" data-target="#GetStarted-Modal">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="#" class="btn btn-medium" data-toggle="modal" data-target="#GetStarted-Modal">Get Started</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="app-section section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="app-img-box wow fadeInLeft">
+<!--                    <img src="images/mobile.png" alt="img">-->
+                    {% for block in self.section10 %}
+                    {% if block.block_type == 'image' %}
+                        {% image block.value fill-420x505 %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="app-content-box wow fadeInRight">
+                    <div class="app-content">
+                        <h1>
+<!--                            Order From <br> Local Favorites-->
+                            {% for block in self.section10 %}
+                            {% if block.block_type == 'heading1' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h1>
+                        <h5 class="font-weight-normal">
+<!--                            Near you.-->
+                            {% for block in self.section10 %}
+                            {% if block.block_type == 'heading2' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </h5>
+                        <p>
+<!--                            Whatever you want. we get it. Order delivery for yourself-->
+<!--                            or with friends and watch in real-time as your ZIPPLY brings you all the things you love.-->
+                            {% for block in self.section10 %}
+                            {% if block.block_type == 'info_line' %}
+                                {{block.value}}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+
+                        <div class="mobile-nunber-input">
+                            <img src="{% static 'images/Icon awesome-mobile-alt.svg' %}" alt="icon">
+                            <input class="form-control" placeholder="Enter your phone number to Get APP">
+                            <button class="btn ente-btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+
+                        {% for block in self.section10 %}
+                        {% if block.block_type == 'cta' %}
+                        <a href="{{block.value.button_page.url}}" class="btn text-uppercase red-btn">{{block.value.button_text}}</a>
+                        {% endif %}
+                        {% endfor %}
+<!--                        <a href="#" class="btn text-uppercase red-btn">Get the App</a>-->
+
+                        <div class="app-store-box">
+                            <p>Available on:</p>
+                            <ul>
+                                <li>
+                                    <img src="{% static 'images/aivalable-on-the-app-store-2.png' %}" alt="img">
+                                </li>
+                                <li>
+                                    <img src="{% static 'images/google-2.png' %}" alt="img">
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wedeliver-section section-padding">
+    <div class="container">
+        <div class="section-title mb-5 wow fadeInDown animated">
+            <h1>
+<!--                We Deliver From-->
+                {% for block in self.section11 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="wedelivery-slider-div">
+            <div class="deliveryfrom-slider owl-carousel owl-theme">
+
+                {% for block in self.section11 %}
+                {% if block.block_type == 'cards' %}
+                {% for card in block.value %}
+                <div class="item">
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+                    {% image card fill-350x115 class="img-fluid" %}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <img src="images/Logo.png" class="img-fluid">-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="flexibility-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title mb-5 wow fadeInDown animated">
+            <span>WITH Zipply COMES</span>
+            <h1>
+                Flexibility & Security
+            </h1>
+        </div>
+        <div class="flexibility-tab-div wow fadeInUp animated">
+            <div class="flex-tab-header">
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item">
+                        <a data-toggle="tab" class="nav-link active" href="#flex-tab1">Trusted, Reliable Drivers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="tab" class="nav-link" href="#flex-tab2">Flexible Service Offerings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="tab" class="nav-link" href="#flex-tab3">Platform Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="tab" class="nav-link" href="#flex-tab4">Industry-leading Technology</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-content-box">
+                <div class="tab-content">
+                    <div id="flex-tab1" class="tab-pane active">
+                        <div class="flexcontentbox">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="flex-img-box">
+                                        <img src="images/trust-img.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="flex-list-box">
+                                        <ul class="flexrightlist">
+                                            <li>
+                                                Drivers go through our stringent 18-point safety standard, including background checks, motor vehicle records, social security number traces, vehicle inspections and more
+                                            </li>
+                                            <li>
+                                                Only 15% of driver applicants end up becoming Zipply Certified™
+                                            </li>
+                                            <li>
+                                                99% 5/5-star customer rating
+                                            </li>
+                                            <li>
+                                                Machine learning analyzes 100+ delivery metrics in real time and flags for abnormalities
+                                            </li>
+                                            <li>
+                                                100% must be scored on a final examination to become Zipply Certified™
+                                            </li>
+                                            <li>
+                                                <a href="safe-helpful.html">Learn more about our 18-point safety standard</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="flex-tab2" class="tab-pane fade">
+                        <div class="flexcontentbox">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="flex-img-box">
+                                        <img src="images/demonstration-img.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="flex-list-box">
+                                        <p>
+                                            We can facilitate many different types of delivery, however, we specialize in big & bulky, final mile, same-day delivery. Our core capabilities include:
+                                        </p>
+                                        <ul class="flexrightlist">
+                                            <li>
+                                                Home delivery (retail store to home, DC/warehouse to home)
+                                                <ol>
+                                                    <li>Threshold (including contactless)</li>
+                                                    <li>Room of choice</li>
+                                                    <li>White glove</li>
+                                                    <li>Simple assembly / installation</li>
+                                                </ol>
+                                            </li>
+                                            <li>
+                                                Buy online, pickup from store or DC
+                                            </li>
+                                            <li>
+                                                Reverse logistics (home-to-store/warehouse, store-to-warehouse)
+                                            </li>
+                                            <li>
+                                                Local carrier (store-to-store, warehouse-to-store, expedited exclusive use)
+                                            </li>
+                                            <li>
+                                                Partner specific SOPs & custom offerings
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="flex-tab3" class="tab-pane fade">
+                        <div class="flexcontentbox">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="flex-img-box">
+                                        <img src="images/features-img.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="flex-list-box">
+                                        <ul class="flexrightlist">
+                                            <li>Delivery in as little as one hour<li>
+                                            <li>15-minute delivery window selection</li>
+                                            <li>On-demand or scheduled options</li>
+                                            <li>Real time driver tracking and industry-leading transparency</li>
+                                            <li>Clear, upfront guaranteed pricing (no surprises)</li>
+                                            <li>Covered by a $2M liability policy</li>
+                                            <li>Centralized support team available 7 days/week, 365 days/year</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="flex-tab4" class="tab-pane fade">
+                        <div class="flexcontentbox">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <div class="flex-img-box">
+                                        <img src="images/analytics-img.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="flex-list-box">
+                                        <p>
+                                            Our innovative technology delivers an unmatched service.
+                                        </p>
+                                        <ul class="flexrightlist">
+                                            <li>Smart matching & fulfillment algorithms are utilized to intelligently match supply & demand.</li>
+                                            <li>Robust API capabilities allow for seamless integration with business partners</li>
+                                            <li>Easy-to-use, intuitive web and mobile applications contribute to a fast and efficient user experience</li>
+                                            <li>Sophisticated load-balancing microservice architecture unlock reliable national scalability both geographically and in volume</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="takeourworld-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Don't Just Take Our Word For It-->
+                {% for block in self.section13 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="testimonial-slider-div wow fadeInUp animated">
+            <div class="testimonial-slider owl-carousel owl-theme">
+                <div class="item">
+                    {% for block in self.section13 %}
+                    {% if block.block_type == 'reviews' %}
+                    {% for review in block.value %}
+                    <div class="testimonial-box">
+                        <p>
+<!--                            “I use Zipply to deliver flooring material from my warehouses to my customers. They-->
+<!--                            customized their tech and services to fit my needs. And my consumers always seem impressed-->
+<!--                            with their driver tracking options. Great all around solution.”-->
+                            {{review.review}}
+                        </p>
+                        <div class="testuser">
+                            <div class="testm-img">
+<!--                                <img src="images/t-img1.jpg" class="img-fluid">-->
+                                {% image review.person_image fill-62x62 class="img-fluid" %}
+                            </div>
+                            <div class="testname">
+                                <p>
+<!--                                    Chris B.-->
+                                    {{review.person_name}}
+                                </p>
+                                <span>
+<!--                                    Miami, FL-->
+                                    {{review.person_info}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Modal -->
+<div class="modal fade talktoexpert-modal" id="talktoexpert-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="talkexpert-div">
+                    <ul>
+                        <li>
+                            <div class="rexp-box">
+                                <span>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                                <h6>
+                                    Partner with us
+                                </h6>
+                                <p>
+                                    Deliver in hours, not days, with our intelligent logistics platform. Zipply’s custom offering integrates seamlessly into your existing processes.
+                                </p>
+                                <a href="business.html" class="btn btn-medium">Learn More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rexp-box">
+                                <span>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </span>
+                                <h6>
+                                    Need a Zipply?
+                                </h6>
+                                <p>
+                                    We make moving big stuff easier.  It’s about the same price as paying your neighbor in beer but without the awkwardness of asking.
+                                </p>
+                                <a href="app.html" class="btn btn-medium">Get The App</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="question-section section-padding bg-black">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInDown animated">
+            <span>
+<!--                Now offering a <b>free</b> delivery analysis-->
+                {% for block in self.section14 %}
+                {% if block.block_type == 'heading1' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </span>
+            <h1>
+<!--                Questions? Talk to a Zipply Expert.-->
+                {% for block in self.section14 %}
+                {% if block.block_type == 'heading2' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+
+            {% for block in self.section14 %}
+            {% if block.block_type == 'cta' %}
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium" data-target="#talktoexpert-modal" data-toggle="modal">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+<!--            <a href="#" class="btn btn-medium" data-target="#talktoexpert-modal" data-toggle="modal">Talk To Expert</a>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}

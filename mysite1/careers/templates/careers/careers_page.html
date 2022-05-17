@@ -1,0 +1,354 @@
+{% extends 'zipply_base.html' %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+Careers
+{% endblock %}
+
+{% block body %}
+
+<section class="page-banner">
+<!--    <img src="images/career-banner.jpg" class="img-fluid">-->
+        {% for block in self.section1 %}
+        {% if block.block_type == 'banner_image' %}
+            {% image block.value fill-1585x555 class="img-fluid" %}
+        {% endif %}
+        {% endfor %}
+        <div class="p-banner-text wow fadeInDown animated">
+        <h1>
+<!--            Solve Problems That Move The World-->
+            {% for block in self.section1 %}
+            {% if block.block_type == 'banner_title' %}
+                {{block.value}}
+            {% endif %}
+            {% endfor %}
+        </h1>
+    </div>
+
+</section>
+
+<section class="whyzipply-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                OUR VALUES-->
+                {% for block in self.section2 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section2 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-4">
+                <div class="whyzipply-box wow fadeInUp animated">
+                    <span>
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    </span>
+                    <h6>
+<!--                        WE'RE CURIOUS-->
+                        {{card.title}}
+                    </h6>
+                    <p>
+<!--                        We ask why. We figure out the reason it didn’t work. We explore solutions. We never stop learning.-->
+                        {{card.text}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE PERSEVERE-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We push through brick walls. We believe in the power of grit. We are tenacious about solving problems.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="whyzipply-box wow fadeInUp animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-users" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE COMMUNICATE-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We ask for help. We listen with curiosity. We discuss ideas, roadblocks and solutions. We kindly argue.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="whyzipply-box wow fadeInLeft animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-archive" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE'RE CUSTOMER OBSESSED-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We work tirelessly for our customers. We solve their problems and earn their trust. We delight them.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="whyzipply-box wow fadeInRight animated">-->
+<!--                    <span>-->
+<!--                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
+<!--                    </span>-->
+<!--                    <h6>-->
+<!--                        WE DO THE RIGHT THING-->
+<!--                    </h6>-->
+<!--                    <p>-->
+<!--                        We start from humility. We act with bold integrity. We drive to make a positive impact around us.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="why-zipply-section section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                WHY Zipply?-->
+                {% for block in self.section3 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="row">
+            {% for block in self.section3 %}
+            {% if block.block_type == 'cards' %}
+            {% for card in block.value %}
+            <div class="col-md-6">
+                <div class="whyzipply-comment-div wow fadeInLeft animated">
+                    <div class="wzip-img">
+<!--                        <img src="images/t-img1.jpg" class="img-fluid">-->
+                        {% image card.image fill-160x155 class="img-fluid" %}
+                    </div>
+                    <div class="wzip-name">
+                        <h6>
+<!--                            John Doe-->
+                            {{card.title}}
+                        </h6>
+                        <p>
+<!--                            “I have always wanted to be a part of a fast-paced, growing startup. I’m able to use my-->
+<!--                            skill set to make a direct impact on a day-to-day level. It’s exciting, dynamic, and-->
+<!--                            demanding. I love the challenge and appreciate being a part of the Zipply family.”-->
+                            {{card.text}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+<!--            <div class="col-md-6">-->
+<!--                <div class="whyzipply-comment-div wow fadeInRight animated">-->
+<!--                    <div class="wzip-img">-->
+<!--                        <img src="images/t-img1.jpg" class="img-fluid">-->
+<!--                    </div>-->
+<!--                    <div class="wzip-name">-->
+<!--                        <h6>-->
+<!--                            John Doe-->
+<!--                        </h6>-->
+<!--                        <p>-->
+<!--                            “I have always wanted to be a part of a fast-paced, growing startup. I’m able to use my-->
+<!--                            skill set to make a direct impact on a day-to-day level. It’s exciting, dynamic, and-->
+<!--                            demanding. I love the challenge and appreciate being a part of the Zipply family.”-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+
+<section class="deli-result-section section-padding bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5 wow fadeInDown animated">
+            <h1>
+<!--                Zipply Benefits-->
+                {% for block in self.section4 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="result-list-box wow fadeInUp animated">
+            <ul>
+                {% for block in self.section4 %}
+                {% if block.block_type == 'points' %}
+                {% for point in block.value %}
+                <li>
+<!--                    Unlimited vacation-->
+                    {{point}}
+                </li>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+<!--                <li>-->
+<!--                    World-class health insurance-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    Join Silicon Prairie's Startup of the Year-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    Paid sick days, vacation and holidays-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    Quarterly bonuses-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    Flexible work options-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    Participation in our equity incentive plan-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    Join the #1 startup to watch in KC-->
+<!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="current-openings-section section-padding">
+    <div class="container">
+        <div class="section-title mb-5 text-center wow fadeInDown animated">
+            <h1>
+<!--                Current Openings-->
+                {% for block in self.section5 %}
+                {% if block.block_type == 'heading' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+        </div>
+        <div class="customer-support-div wow fadeInUp animated">
+            <ul>
+                {% for block in self.section5 %}
+                {% if block.block_type == 'openings' %}
+                {% for opening in block.value %}
+
+
+                <li>
+                    <h6>
+                        <a href="#">
+<!--                            Customer Support Specialist-->
+                            {{opening.role}}
+                        </a>
+                    </h6>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-6">
+                            <p>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i> {{opening.location}} <!-- Kansas City -->
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p>
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{opening.date_posted}} <!-- Posted 2 months ago -->
+                            </p>
+                        </div>
+                    </div>
+                </li>
+
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade talktoexpert-modal" id="talktoexpert-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="talkexpert-div">
+                    <ul>
+                        <li>
+                            <div class="rexp-box">
+                                <span>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                                <h6>
+                                    Partner with us
+                                </h6>
+                                <p>
+                                    Deliver in hours, not days, with our intelligent logistics platform. Zipply’s custom offering integrates seamlessly into your existing processes.
+                                </p>
+                                <a href="business.html" class="btn btn-medium">Learn More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="rexp-box">
+                                <span>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </span>
+                                <h6>
+                                    Need a Zipply?
+                                </h6>
+                                <p>
+                                    We make moving big stuff easier.  It’s about the same price as paying your neighbor in beer but without the awkwardness of asking.
+                                </p>
+                                <a href="app.html" class="btn btn-medium">Get The App</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="question-section section-padding bg-black">
+    <div class="container">
+        <div class="section-title white-title text-center wow fadeInDown animated">
+            <span>
+<!--                Now offering a <b>free</b> delivery analysis-->
+                {% for block in self.section6 %}
+                {% if block.block_type == 'heading1' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </span>
+            <h1>
+<!--                Questions? Talk to a Zipply Expert.-->
+                {% for block in self.section6 %}
+                {% if block.block_type == 'heading2' %}
+                    {{block.value}}
+                {% endif %}
+                {% endfor %}
+            </h1>
+            {% for block in self.section6 %}
+            {% if block.block_type == 'cta' %}
+            <a href="{{block.value.button_page.url}}" class="btn btn-medium" data-target="#talktoexpert-modal" data-toggle="modal">{{block.value.button_text}}</a>
+            {% endif %}
+            {% endfor %}
+<!--            <a href="#" class="btn btn-medium" data-target="#talktoexpert-modal" data-toggle="modal">Talk To Expert</a>-->
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
